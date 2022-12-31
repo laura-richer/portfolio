@@ -1,0 +1,26 @@
+  query {
+    blogs {
+      data {
+        id
+        attributes {
+          title
+          content
+          heroimage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          categories {
+            data {
+              id
+              attributes {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }

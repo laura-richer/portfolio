@@ -1,0 +1,15 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Laura richer portfolio",
+  "author": "Laura Richer",
+  "license": "ISC",
+  "scripts": {
+    "app": "(cd backend && yarn dev) & (cd frontend && yarn dev)",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "volta": {
+    "node": "18.12.1",
+    "yarn": "1.22.11"
+  }
+}
