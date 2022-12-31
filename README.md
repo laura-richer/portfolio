@@ -1,31 +1,19 @@
 # Portfolio
+A Strapi/Nuxt3/Apollo build
 
-## API
+### Prerequisits
+`node`
 
-Express/Node API
+`yarn`
 
-```bash
-cd api
+`volta`
 
-npm install
+### Setup
+`yarn install` inside both the backend and frontend folders
 
-npm run start
-```
+### Local development
+`yarn app` in the root folder runs both the frontend and backend
 
-http://localhost:8000
+Frontend url: http://localhost:3000/
 
-## Frontend
-
-Vue/Vite
-
-```bash
-cd frontend
-
-npm install
-
-npm run dev
-```
-
-## Data
-
-Data for the API is stored in `/data` as json files
+Backend url: http://localhost:1337/
