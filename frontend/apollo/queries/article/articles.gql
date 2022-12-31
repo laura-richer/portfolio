@@ -1,11 +1,10 @@
     query {
-      projects {
+      articles {
         data {
           id
           attributes {
             title
-            overview
-            url
+            content
             image {
               data {
                 attributes {
@@ -13,7 +12,7 @@
                 }
               }
             }
-            technologies {
+            categories {
               data {
                 id
                 attributes {

@@ -1,17 +1,18 @@
-  query {
-    blogs {
+  query Articles($id: ID!) {
+    article(id: $id) {
       data {
         id
         attributes {
           title
           content
-          heroimage {
+          image {
             data {
               attributes {
                 url
               }
             }
           }
+
           categories {
             data {
               id
