@@ -12,13 +12,18 @@
   --color-blue-light: #4bb1ff;
 }
 
+// Breakpoints
 $desktop: 1020px;
 $tablet: 768px;
 
+// Typography
 $font-family-headings: Lobster, Arial, sans-serif;
 $font-family-body: Roboto, Arial, sans-serif;
 
+// Spacing
 $spacer: 1rem;
 $container-padding: 0 $spacer * 2;
 
-$animate-default: 0.2s ease-in-out;
+// Animation
+$animation-duration: 0.3s;
+$animate-default: $animation-duration ease-in-out;

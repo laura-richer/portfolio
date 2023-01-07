@@ -3,6 +3,7 @@
         data {
           id
           attributes {
+            publishedAt
             title
             content
             image {
@@ -10,14 +11,6 @@
                 attributes {
                   url
                   alternativeText
-                }
-              }
-            }
-            categories {
-              data {
-                id
-                attributes {
-                  name
                 }
               }
             }

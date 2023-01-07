@@ -12,30 +12,13 @@ const { data, pending } = await useAsyncQuery(projectsQuery, { limit: props.limi
 </script>
 
 <template>
-  <div v-if="!pending && data?.projects?.data" class="list">
-    <div class="list__grid">
-      <div v-for="project in data?.projects?.data" :key="project.id">
-        <CardsProjectCard :project-id="project.id" v-bind="project.attributes" />
-      </div>
+  <ListsListWrap :v-if="!pending && data?.projects?.data" :show-button="!!limit">
+    <div v-for="project in data?.projects?.data" :key="project.id">
+      <CardsProjectCard :project-id="project.id" v-bind="project.attributes" />
     </div>
 
-    <div class="list__button">
-      <Button to="/projects" text="See all projects" v-if="limit" />
-    </div>
-  </div>
+    <template #button>
+      <Button to="/projects" text="See all projects" />
+    </template>
+  </ListsListWrap>
 </template>
-
-<style lang="scss" scoped>
-.list {
-  &__grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  &__button {
-    margin-top: 4rem;
-    text-align: center;
-  }
-}
-</style>

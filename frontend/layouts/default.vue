@@ -2,7 +2,7 @@
   <div>
     <Header />
 
-    <div>
+    <div class="main">
       <slot />
     </div>
 

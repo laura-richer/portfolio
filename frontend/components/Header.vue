@@ -65,7 +65,8 @@
       transition: color $animate-default;
 
       &:hover,
-      &:focus {
+      &:focus,
+      &.router-link-exact-active {
         color: var(--color-purple-light);
       }
     }

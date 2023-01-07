@@ -28,9 +28,6 @@ defineProps({
 
 @import '../scss/resources';
 
-$animation-duration: 0.3s;
-$border-color: var(--color-purple-light);
-
 .button {
   $self: &;
 
@@ -65,7 +62,6 @@ $border-color: var(--color-purple-light);
 
   &__inner {
     background-color: var(--color-white);
-    background-image: linear-gradient(90deg, var(--color-purple-light), var(--color-pink));
     background-repeat: repeat;
     background-size: 100%;
     /* stylelint-disable-next-line order/properties-order */
@@ -77,10 +73,6 @@ $border-color: var(--color-purple-light);
 
   &:hover,
   &:focus {
-    #{ $self }__inner {
-      background-image: linear-gradient(90deg, var(--color-pink), var(--color-purple-light));
-    }
-
     &:before,
     &:after {
       width: 100%;
@@ -89,15 +81,57 @@ $border-color: var(--color-purple-light);
     }
 
     &:before {
-      border-top: 3px solid $border-color;
-      border-right: 3px solid $border-color;
       transition: width calc($animation-duration / 2) cubic-bezier(.07,.62,.61,1), height calc($animation-duration / 4) calc($animation-duration / 2) cubic-bezier(.07,.62,.61,1), opacity $animation-duration ease-in-out;
     }
 
     &:after {
-      border-bottom: 3px solid $border-color;
-      border-left: 3px solid $border-color;
       transition: width calc($animation-duration / 2) calc($animation-duration / 2 * 1.5) cubic-bezier(.07,.62,.61,1), height calc($animation-duration / 4) calc($animation-duration * 1.5) cubic-bezier(.07,.62,.61,1), border-left 0s calc($animation-duration / 2 * 1.5) linear, opacity $animation-duration ease-in-out;
+    }
+  }
+
+  &--primary {
+    #{ $self }__inner {
+      background-image: linear-gradient(90deg, var(--color-purple-light), var(--color-pink));
+    }
+
+    &:hover,
+    &:focus {
+      #{ $self }__inner {
+        background-image: linear-gradient(90deg, var(--color-pink), var(--color-purple-light));
+      }
+
+      &:before {
+        border-top: 3px solid var(--color-purple-light);
+        border-right: 3px solid var(--color-purple-light);
+      }
+
+      &:after {
+        border-bottom: 3px solid var(--color-purple-light);
+        border-left: 3px solid var(--color-purple-light);
+      }
+    }
+  }
+
+  &--secondary {
+    #{ $self }__inner {
+      background-image: linear-gradient(90deg, var(--color-blue), var(--color-blue-light));
+    }
+
+    &:hover,
+    &:focus {
+      #{ $self }__inner {
+        background-image: linear-gradient(90deg, var(--color-blue-light), var(--color-blue));
+      }
+
+      &:before {
+        border-top: 3px solid var(--color-blue);
+        border-right: 3px solid var(--color-blue);
+      }
+
+      &:after {
+        border-bottom: 3px solid var(--color-blue);
+        border-left: 3px solid var(--color-blue);
+      }
     }
   }
 }

@@ -34,9 +34,8 @@
     },
     "technologies": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::technology.technology",
-      "mappedBy": "projects"
+      "relation": "oneToMany",
+      "target": "api::technology.technology"
     }
   }
 }

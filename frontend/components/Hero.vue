@@ -24,7 +24,7 @@ onUnmounted(() => window.removeEventListener('scroll', toggleAnimate));
       </div>
     </div>
 
-    <a href="#projects" @click="animate = false">
+    <a href="#projects">
       <i class="icon icon-arrow-down hero__anchor-button" :class="{'hero__anchor-button--animate': animate}"></i>
     </a>
   </div>

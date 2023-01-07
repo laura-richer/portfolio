@@ -4,6 +4,6 @@
       <h2>Blog</h2>
     </template>
 
-    <BlogList />
+    <ListsBlogList />
   </SectionWrap>
 </template>

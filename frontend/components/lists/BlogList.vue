@@ -12,14 +12,13 @@ const { data, pending } = await useAsyncQuery(articlesQuery, { limit: props.limi
 </script>
 
 <template>
-  <div v-if="!pending">
-    <ul v-if="data?.articles?.data">
-      <li v-for="blog in data.articles.data" :key="blog.id">
-        <NuxtLink :to="`/blog/${blog.id}`">
-          <p>{{ blog.attributes.title }}</p>
-        </NuxtLink>
-      </li>
-    </ul>
-    <NuxtLink to="/blog" v-if="limit">See all blog posts</NuxtLink>
-  </div>
+  <ListsListWrap :v-if="!pending && data?.articles?.data" :show-button="!!limit">
+    <div v-for="article in data?.articles?.data" :key="article.id">
+      <CardsBlogCard :blog-id="article.id" v-bind="article.attributes" />
+    </div>
+
+    <template #button>
+      <Button to="/blog" text="See all blog posts" button-type="secondary" />
+    </template>
+  </ListsListWrap>
 </template>
