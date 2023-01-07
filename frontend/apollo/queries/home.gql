@@ -1,0 +1,18 @@
+  query Home {
+    home {
+      data {
+
+        attributes {
+          introtext
+          introsubtext
+          hero {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,23 +1,14 @@
-    query {
-      projects {
+    query ($limit: Int) {
+      projects(pagination: { limit: $limit }) {
         data {
           id
           attributes {
             title
-            overview
-            url
             image {
               data {
                 attributes {
                   url
-                }
-              }
-            }
-            technologies {
-              data {
-                id
-                attributes {
-                  name
+                  alternativeText
                 }
               }
             }

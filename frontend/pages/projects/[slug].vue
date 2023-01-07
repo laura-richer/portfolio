@@ -7,9 +7,12 @@ const { title, overview, url, image, technologies } = data.value.project.data.at
 </script>
 
 <template>
-  <div>
+  <SectionWrap>
+    <template #title>
+      <h2>{{ title }}</h2>
+    </template>
+
     <p>Details for {{ slug }}</p>
-    <p>{{ title }}</p>
     <p>{{ overview }}</p>
     <p>{{ url }}</p>
     <p>{{ image.data.attributes.url }}</p>
@@ -19,5 +22,5 @@ const { title, overview, url, image, technologies } = data.value.project.data.at
         {{ technology.attributes.name }}
       </li>
     </ul>
-  </div>
+  </SectionWrap>
 </template>

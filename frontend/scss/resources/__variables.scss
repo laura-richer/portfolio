@@ -1,0 +1,24 @@
+/* stylelint-disable value-keyword-case */
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-black-alpha-60: #00000060;
+  --color-black-alpha-90: #00000090;
+  --color-grey: #d9d9d9;
+  --color-purple: #4f1f8f;
+  --color-purple-light: #8533f3;
+  --color-pink: #916bb2;
+  --color-blue: #217ec6;
+  --color-blue-light: #4bb1ff;
+}
+
+$desktop: 1020px;
+$tablet: 768px;
+
+$font-family-headings: Lobster, Arial, sans-serif;
+$font-family-body: Roboto, Arial, sans-serif;
+
+$spacer: 1rem;
+$container-padding: 0 $spacer * 2;
+
+$animate-default: 0.2s ease-in-out;

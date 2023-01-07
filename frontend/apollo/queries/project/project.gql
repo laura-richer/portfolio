@@ -10,10 +10,10 @@
             data {
               attributes {
                 url
+                alternativeText
               }
             }
           }
-
           technologies {
             data {
               id

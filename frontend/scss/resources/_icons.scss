@@ -1,0 +1,21 @@
+@import '@/scss/resources/icons/icon-arrow-down';
+@import '@/scss/resources/icons/icon-github';
+
+.icon {
+  display: block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+
+  &-arrow-down {
+    mask-image: icon-arrow-down();
+    mask-size: 100%;
+  }
+
+  &-github {
+    background-color: var(--color-white);
+    mask-image: icon-github();
+    mask-size: 100%;
+  }
+}

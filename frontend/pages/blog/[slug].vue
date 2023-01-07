@@ -7,9 +7,12 @@ const { title, content, image, categories } = data.value.article.data.attributes
 </script>
 
 <template>
-  <div>
+  <SectionWrap>
+    <template #title>
+      <h2>{{ title }}</h2>
+    </template>
+
     <p>Details for {{ slug }}</p>
-    <p>{{ title }}</p>
     <p>{{ content }}</p>
     <p>{{ image.data.attributes.url }}</p>
 
@@ -18,5 +21,5 @@ const { title, content, image, categories } = data.value.article.data.attributes
         {{ category.attributes.name }}
       </li>
     </ul>
-  </div>
+  </SectionWrap>
 </template>

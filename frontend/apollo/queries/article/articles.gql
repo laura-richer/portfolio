@@ -1,5 +1,5 @@
-    query {
-      articles {
+    query ($limit: Int) {
+      articles(pagination: { limit: $limit }) {
         data {
           id
           attributes {
@@ -9,6 +9,7 @@
               data {
                 attributes {
                   url
+                  alternativeText
                 }
               }
             }
