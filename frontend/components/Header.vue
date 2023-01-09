@@ -56,6 +56,7 @@
       align-items: center;
     }
 
+    // eslint-disable-next-line vue-scoped-css/no-unused-selector
     &-item {
       padding: 0 $spacer;
       color: var(--color-white);

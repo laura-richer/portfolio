@@ -27,8 +27,8 @@ module.exports = {
     'plugin:sonarjs/recommended',
     'plugin:unicorn/recommended',
     'plugin:vue-scoped-css/recommended',
+    'plugin:vue/vue3-recommended',
     'prettier',
-    '@nuxt/eslint-config',
   ],
   parserOptions: {
     parse: '@babel/eslint-parser',
@@ -65,16 +65,11 @@ module.exports = {
     'vue/multi-word-component-names': ['off'],
     'vue/singleline-html-element-content-newline': ['off'],
     'vue/html-indent': ['off'],
-    'vue/max-attributes-per-line': [
-      'error',
-      {
-        singleline: {
-          max: 3,
-        },
-        multiline: {
-          max: 1,
-        },
-      },
-    ],
+    'no-undef': ['off'],
   },
+  overrides: [
+    {
+      files: ['.js', '.vue'],
+    },
+  ],
 };

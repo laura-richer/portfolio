@@ -14,20 +14,24 @@ defineProps({
     type: Object,
     default: () => {},
   },
-})
+});
 </script>
 
 <template>
-  <NuxtLink :to="`/projects/${projectId}`" class="card">
-    <figure class="card__image">
-      <img class="card__image-element" :src="`http://localhost:1337${image.data.attributes.url}`" :alt="image.data.attributes.alternativeText || title" />
+  <NuxtLink :to="`/projects/${projectId}`" class="project-card">
+    <figure class="project-card__image">
+      <img
+        class="project-card__image-element"
+        :src="`http://localhost:1337${image.data.attributes.url}`"
+        :alt="image.data.attributes.alternativeText || title"
+      />
     </figure>
-    <span class="card__title">{{ title }}</span>
+    <span class="project-card__title">{{ title }}</span>
   </NuxtLink>
 </template>
 
 <style lang="scss" scoped>
-.card {
+.project-card {
   position: relative;
 
   &__image {

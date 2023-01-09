@@ -1,10 +1,10 @@
 <script setup>
-const props = defineProps({
+defineProps({
   backgroundColor: {
     type: String,
-    default: 'white'
-  }
-})
+    default: 'white',
+  },
+});
 </script>
 
 <template>

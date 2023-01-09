@@ -3,18 +3,17 @@ defineProps({
   showButton: {
     type: Boolean,
     default: false,
-  }
+  },
 });
 </script>
 
 <template>
   <div class="list">
-
     <div class="list__grid">
       <slot />
     </div>
 
-    <div class="list__button" v-if="showButton">
+    <div v-if="showButton" class="list__button">
       <slot name="button" />
     </div>
   </div>

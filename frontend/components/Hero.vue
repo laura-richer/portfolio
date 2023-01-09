@@ -2,7 +2,9 @@
 import homeQuery from '@/apollo/queries/home.gql';
 
 const animate = ref(true);
-const toggleAnimate = () => animate.value = window.scrollY === 0 ? true : false;
+const toggleAnimate = () => {
+  animate.value = window.scrollY === 0;
+};
 window.addEventListener('scroll', toggleAnimate);
 
 const { data, pending } = await useAsyncQuery(homeQuery);
@@ -25,7 +27,10 @@ onUnmounted(() => window.removeEventListener('scroll', toggleAnimate));
     </div>
 
     <a href="#projects">
-      <i class="icon icon-arrow-down hero__anchor-button" :class="{'hero__anchor-button--animate': animate}"></i>
+      <i
+        class="icon icon-arrow-down hero__anchor-button"
+        :class="{ 'hero__anchor-button--animate': animate }"
+      ></i>
     </a>
   </div>
 </template>
@@ -124,7 +129,11 @@ onUnmounted(() => window.removeEventListener('scroll', toggleAnimate));
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
 
@@ -139,7 +148,7 @@ onUnmounted(() => window.removeEventListener('scroll', toggleAnimate));
 
 @keyframes kenburns {
   0% {
-    transform: scale(1.0);
+    transform: scale(1);
     transform-origin: bottom left;
   }
 

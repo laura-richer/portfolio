@@ -8,14 +8,13 @@
     "postinstall": "nuxt prepare",
     "stylelint": "stylelint '**/*.{scss,vue}' --custom-syntax postcss-scss && exit 0",
     "stylelint:fix": "stylelint --fix '**/*.{scss,vue}' --custom-syntax postcss-scss && exit 0",
-    "lint": "eslint '**/*.{js,vue}' && exit 0",
-    "lint:fix": "eslint --fix '**/*.{js,vue}' && exit 0"
+    "eslint": "eslint components pages layouts --ext .js,.vue",
+    "eslint:fix": "eslint components pages layouts --ext .js,.vue --fix"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-env": "^7.20.2",
     "@nuxtjs/apollo": "^5.0.0-alpha.5",
-    "@nuxtjs/eslint-config": "^12.0.0",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
@@ -49,5 +48,8 @@
   },
   "volta": {
     "extends": "../package.json"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.7"
   }
 }

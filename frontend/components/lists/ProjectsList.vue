@@ -1,14 +1,14 @@
 <script setup>
 import projectsQuery from '@/apollo/queries/project/projects.gql';
 
-const props = defineProps({
+const properties = defineProps({
   limit: {
     type: Number,
     default: undefined,
-  }
+  },
 });
 
-const { data, pending } = await useAsyncQuery(projectsQuery, { limit: props.limit });
+const { data, pending } = await useAsyncQuery(projectsQuery, { limit: properties.limit });
 </script>
 
 <template>

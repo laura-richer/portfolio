@@ -1,6 +1,9 @@
 <template>
   <footer class="footer">
-    <p class="small">Say hello 👋 <a href="mailto:lauraricher@gmail.com" class="footer__link">lauraricher@gmail.com</a></p>
+    <p class="small">
+      Say hello 👋
+      <a href="mailto:lauraricher@gmail.com" class="footer__link">lauraricher@gmail.com</a>
+    </p>
   </footer>
 </template>
 

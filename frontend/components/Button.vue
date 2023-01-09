@@ -12,8 +12,8 @@ defineProps({
 
   buttonType: {
     type: String,
-    default: 'primary'
-  }
+    default: 'primary',
+  },
 });
 </script>
 
@@ -24,7 +24,8 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-/* stylelint-disable property-no-vendor-prefix */
+// eslint-disable vue-scoped-css/no-unused-selector
+// stylelint-disable property-no-vendor-prefix
 
 @import '../scss/resources';
 
@@ -81,11 +82,19 @@ defineProps({
     }
 
     &:before {
-      transition: width calc($animation-duration / 2) cubic-bezier(.07,.62,.61,1), height calc($animation-duration / 4) calc($animation-duration / 2) cubic-bezier(.07,.62,.61,1), opacity $animation-duration ease-in-out;
+      transition: width calc($animation-duration / 2) cubic-bezier(0.07, 0.62, 0.61, 1),
+        height calc($animation-duration / 4) calc($animation-duration / 2)
+          cubic-bezier(0.07, 0.62, 0.61, 1),
+        opacity $animation-duration ease-in-out;
     }
 
     &:after {
-      transition: width calc($animation-duration / 2) calc($animation-duration / 2 * 1.5) cubic-bezier(.07,.62,.61,1), height calc($animation-duration / 4) calc($animation-duration * 1.5) cubic-bezier(.07,.62,.61,1), border-left 0s calc($animation-duration / 2 * 1.5) linear, opacity $animation-duration ease-in-out;
+      transition: width calc($animation-duration / 2) calc($animation-duration / 2 * 1.5)
+          cubic-bezier(0.07, 0.62, 0.61, 1),
+        height calc($animation-duration / 4) calc($animation-duration * 1.5)
+          cubic-bezier(0.07, 0.62, 0.61, 1),
+        border-left 0s calc($animation-duration / 2 * 1.5) linear,
+        opacity $animation-duration ease-in-out;
     }
   }
 

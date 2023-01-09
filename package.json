@@ -4,6 +4,7 @@
   "description": "Laura richer portfolio",
   "author": "Laura Richer",
   "license": "ISC",
+  "private": true,
   "scripts": {
     "app": "(cd backend && yarn dev) & (cd frontend && yarn dev)",
     "test": "echo \"Error: no test specified\" && exit 1"
