@@ -37,7 +37,8 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['sonarjs'],
+  plugins: ['sonarjs', 'graphql'],
+  ignorePatterns: ['/scss/*', '/assets/*'],
   rules: {
     'compat/compat': ['warn'],
     'import/no-mutable-exports': ['warn'],
@@ -67,9 +68,4 @@ module.exports = {
     'vue/html-indent': ['off'],
     'no-undef': ['off'],
   },
-  overrides: [
-    {
-      files: ['.js', '.vue'],
-    },
-  ],
 };

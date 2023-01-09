@@ -8,8 +8,8 @@
     "postinstall": "nuxt prepare",
     "stylelint": "stylelint '**/*.{scss,vue}' --custom-syntax postcss-scss && exit 0",
     "stylelint:fix": "stylelint --fix '**/*.{scss,vue}' --custom-syntax postcss-scss && exit 0",
-    "eslint": "eslint components pages layouts --ext .js,.vue",
-    "eslint:fix": "eslint components pages layouts --ext .js,.vue --fix"
+    "eslint": "eslint '*/**' --ext .js,.vue,.gql,.graphql",
+    "eslint:fix": "eslint '*/**' --ext .js,.vue,.gql,.graphql --fix"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
@@ -20,6 +20,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-graphql": "^4.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^27.1.7",
     "eslint-plugin-lodash": "^7.4.0",
