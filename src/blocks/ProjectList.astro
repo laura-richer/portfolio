@@ -1,0 +1,50 @@
+---
+import Button from '@/atoms/Button.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+
+const { count } = Astro.props;
+---
+
+<div id="projects" class="project-list">
+  <div class="container project-list__container">
+    <SectionHeader
+      title="Projects"
+      copy="Dantooine. They're on Dantooine. Leave that to me. Send a distress signal, and inform the Senate that all on board were killed. I have traced the Rebel spies to her. Now she is my only link to finding their secret base. Hey, Luke!"
+      titleColor="purple"
+    />
+
+    <div class="project-list__grid">
+      <p>project</p>
+      <p>project</p>
+      <p>project</p>
+    </div>
+
+    {count &&
+      <div class="project-list__cta">
+        <Button text="See all projects" color="purple" />
+      </div>
+    }
+
+  </div>
+</div>
+
+<style lang="scss">
+@import '../scss/resources/breakpoints';
+
+.project-list {
+  &__grid {
+    margin-top: var(--spacer-l);
+
+    @media screen and (min-width: $breakpoint-mobile) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacer-xl);
+  }
+}
+</style>

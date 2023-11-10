@@ -1,0 +1,26 @@
+{
+  "eslint.workingDirectories": [
+    "./frontend"
+  ],
+  "files.exclude": {
+    "**/.DS_Store": true,
+  },
+  "workbench.colorCustomizations": {
+    "activityBarBadge.background": "#7645c0",
+    "activityBarBadge.foreground": "#fff",
+    "statusBar.background": "#7645c0",
+    "statusBar.foreground": "#fff",
+    "titleBar.activeBackground": "#7645c0",
+    "titleBar.activeForeground": "#fff",
+    "titleBar.inactiveBackground": "#7645c0",
+    "titleBar.inactiveForeground": "#fff"
+  },
+  "editor.tabSize": 2,
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": [
+    "css",
+    "scss",
+    "vue",
+  ]
+}

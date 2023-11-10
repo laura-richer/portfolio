@@ -1,0 +1,37 @@
+---
+const { text, link, tag, color } = Astro.props;
+
+const ButtonElement = tag || 'a';
+---
+
+<ButtonElement class={`button button--${color}`} href={link}>{text}</ButtonElement>
+
+<style lang="scss" is:global>
+  .button {
+    display: inline-block;
+    width: auto;
+    color: var(--color-white);
+    background-color: transparent;
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 2px solid var(--color-white);
+    padding: var(--spacer-xs) var(--spacer-s);
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+
+    &--purple {
+      color: var(--color-purple);
+      border-color: var(--color-purple);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      .no-touchevents & {
+        background-color: var(--color-black-alpha);
+      }
+    }
+  }
+</style>

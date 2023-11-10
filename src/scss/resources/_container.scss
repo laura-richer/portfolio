@@ -1,0 +1,15 @@
+@mixin container {
+  padding: var(--spacer-l) var(--spacer-s);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+
+  @media screen and (min-width: $breakpoint-mobile) {
+    padding: var(--spacer-xl) calc(var(--spacer-s) * 2);
+  }
+}
+
+@mixin container-compact {
+  padding: 0 var(--spacer-s);
+  max-width: var(--container-compact-max-width);
+  margin: 0 auto;
+}

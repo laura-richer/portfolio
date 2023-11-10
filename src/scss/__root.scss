@@ -1,0 +1,35 @@
+:root {
+  --color-purple: #7645c0;
+  --color-blue: #28aad5;
+  --color-white: #ffffff;
+  --color-grey: #ececec;
+  --color-grey-dark: #2c2c2c;
+  --color-black: #111111;
+  --color-black-alpha: #11111190;
+
+  --base-font-size: 1.4rem;
+
+  --h1-font-size: 4rem;
+  --h2-font-size: 3rem;
+  --h3-font-size: 2.4rem;
+
+  --spacer-xs: 1rem;
+  --spacer-s: 1.5rem;
+  --spacer-m: 3.5rem;
+  --spacer-l: 5rem;
+  --spacer-xl: 7rem;
+
+  --container-max-width: 1024px;
+  --container-compact-max-width: 768px;
+
+  --font-family-logo: Lobster, Roboto, arial, sans-serif;
+  --font-family-body: Roboto, arial, sans-serif;
+
+  --font-weight-light: 200;
+  --font-weight-regular: 400;
+  --font-weight-bold: 600;
+
+  --header-height: 88px;
+
+  --breakpoint-desktop: 1024px;
+}
