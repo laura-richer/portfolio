@@ -1,35 +1,18 @@
 ---
-import Github from '@/icons/Github.astro';
-import Instagram from '@/icons/Instagram.astro';
+import SocialIcons from '@/components/SocialIcons.astro';
 ---
 
 <footer class="footer">
   <div class="footer__container container">
-    <nav class="footer__social">
-      <span>
-        <a href="https://github.com/laura-richer" target="_blank" rel="noopener noreferrer" class="footer__link footer__social-icon">
-          <Github />
-        </a>
-      </span>
-      <span>
-        <a href="https://www.instagram.com/the.amateur.pixel/" target="_blank" rel="noopener noreferrer" class="footer__link footer__social-icon">
-          <Instagram />
-        </a>
-      </span>
-    </nav>
-    <div class="footer__contact-details">
-      <span>
-        <a href="tel:07891384298" class="footer__link">07891 384298</a>
-      </span>
-      <span>
-        <a href="mailto:lauraricher@gmail.com" class="footer__link">lauraricher@gmail.com</a>
-      </span>
+    <div class="footer__social">
+      <SocialIcons />
     </div>
   </div>
 </footer>
 
 <style lang="scss">
 @import '../scss/resources/breakpoints';
+@import '../scss/resources/hover';
 
 .footer {
   background-color: var(--color-black);
@@ -37,52 +20,23 @@ import Instagram from '@/icons/Instagram.astro';
 
   &__container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     padding-top: var(--spacer-m);
     padding-bottom: var(--spacer-m);
-    gap: var(--spacer-s);
 
     @media screen and (min-width: $breakpoint-mobile) {
-      flex-direction: row;
-      justify-content: space-between;
       padding-top: var(--spacer-xs);
       padding-bottom: var( --spacer-xs);
     }
   }
 
-  &__social {
-    display: flex;
-    gap: var(--spacer-xs);
-
-    &-icon {
-      display: block;
-      width: 2rem;
-      height: 2rem;
-    }
+  :global(.social-icons) {
+    gap: var(--spacer-s);
   }
 
-  &__contact-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacer-xs);
-
-    @media screen and (min-width: $breakpoint-mobile) {
-      flex-direction: row;
-      gap: var(--spacer-m);
-    }
-  }
-
-  &__link {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.25s ease-in-out;
-
-    &:hover,
-    &:focus {
-      color: var(--color-purple);
-    }
+  :global(.social-icons__item:hover),
+  :global(.social-icons__item:focus) {
+    color: var(--color-purple);
   }
 }
 </style>

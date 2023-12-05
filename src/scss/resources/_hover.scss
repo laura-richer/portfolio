@@ -1,8 +1,28 @@
 @mixin hover {
   &:hover,
-  &:focus {
-    .no-touchevents & {
+  &:focus,
+  &:active {
+    :global(.no-touchevents) & {
       @content;
+    }
+  }
+}
+
+@mixin hover-state($content, $color) {
+  &:after {
+    position: absolute;
+    left: 0;
+    width: 0;
+    color: $color;
+    white-space: nowrap;
+    overflow: hidden;
+    content: $content;
+    transition: width var(--animation-speed) ease-in-out;
+  }
+
+  @include hover {
+    &:after {
+      width: 100%;
     }
   }
 }

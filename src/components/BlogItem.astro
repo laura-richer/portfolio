@@ -1,0 +1,47 @@
+---
+const { title, slug, thumbnail, description } = Astro.props;
+---
+
+<div class="blog-item">
+  <figure class="blog-item__image">
+    <img src={ thumbnail } alt={ title } />
+  </figure>
+  <div class="blog-item__content">
+    <span class="h3 blog-item__title">{title}</span>
+    <p>{description}</p>
+    <span class="h4 blog-item__cta">Read more</span>
+  </div>
+</div>
+
+<style lang="scss">
+@import '../scss/resources/hover';
+
+.blog-item {
+  display: flex;
+  gap: var(--spacer-s);
+
+  &__image {
+    max-width: 15rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-s);
+  }
+
+  &__title {
+    display: block;
+    font-weight: 200;
+  }
+
+  &__cta {
+    transition: color var(--animation-speed) ease-in-out;
+    cursor: pointer;
+
+    @include hover {
+      color: var(--color-blue);
+    }
+  }
+}
+</style>

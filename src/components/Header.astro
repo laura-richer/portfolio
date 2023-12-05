@@ -1,25 +1,87 @@
+---
+import IconBurger from '@/icons/IconBurger.astro';
+import IconClose from '@/icons/IconClose.astro';
+import SocialIcons from '@/components/SocialIcons.astro';
+---
+
 <header class="header">
-  <a href="/" class="header__title">Laura Richer</a>
-  <p>menu</p>
+  <div class="header__container">
+    <a href="#" class="header__title">Laura Richer</a>
+    <span class="header__menu-icon header__menu-icon--open-btn" role="button">
+      <IconBurger />
+    </span>
+  </div>
+
+  <div class="header__menu">
+    <span class="header__menu-icon header__menu-icon--close-btn" role="button">
+      <IconClose />
+    </span>
+
+    <nav class="header__menu-items">
+      <div class="header__menu-item">
+        <a href="#" class="header__menu-link header__menu-link--home">Home</a>
+      </div>
+      <div class="header__menu-item">
+        <a href="#projects" class="header__menu-link header__menu-link--projects">Projects</a>
+      </div>
+      <div class="header__menu-item">
+        <a href="#blog" class="header__menu-link header__menu-link--blog">Blog</a>
+      </div>
+      <div class="header__menu-item">
+        <a href="#about" class="header__menu-link header__menu-link--about">About</a>
+      </div>
+      <span class="header__menu-item"><SocialIcons /></span>
+      <div class="header__menu-item">
+        <a href="mailto:lauraricher@gmail.com" class="header__menu-link header__menu-link--small header__menu-link--email">lauraricher@gmail.com</a>
+      </div>
+      <div class="header__menu-item">
+        <a href="tel:07891384298" class="header__menu-link header__menu-link--small header__menu-link--phone">07891384298</a>
+      </div>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const menuButton = document.querySelectorAll('.header__menu-icon');
+  const menu = document.querySelector('.header__menu');
+  const navItems = document.querySelectorAll('.header__menu-item');
+
+  const handleToggleMenu = () => {
+    menu.classList.toggle('header__menu--active');
+  };
+
+  menuButton.forEach(button => {
+    button.addEventListener('click', handleToggleMenu);
+  });
+
+  navItems.forEach(item => {
+    item.addEventListener('click', handleToggleMenu);
+  });
+</script>
 
 <style lang="scss">
 @import '../scss/resources/breakpoints';
 @import '../scss/resources/hover';
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  color: var(--color-white);
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  width: 100%;
-  padding: calc(var(--spacer-s) * 2) var(--spacer-s);
-  background-color: var(--color-black-alpha);
+  $self: &;
+  --header-padding: var(--spacer-s);
 
   @media screen and (min-width: $breakpoint-mobile) {
-    padding: calc(var(--spacer-s) * 2);
+    --header-padding: var(--spacer-s) calc(var(--spacer-s) * 2);
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-white);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    width: 100%;
+    padding: var(--header-padding);
+    background-color: var(--color-black-alpha);
   }
 
   &__title {
@@ -30,20 +92,140 @@
     font-size: 2.8rem;
     line-height: 3.8rem;
 
-    &:after {
-      position: absolute;
-      left: 0;
-      width: 0;
-      color: var(--color-purple);
-      white-space: nowrap;
-      overflow: hidden;
-      content: 'Laura Richer';
-      transition: width 0.3s ease-in-out;
+    @include hover-state('Laura Richer', var(--color-purple));
+  }
+
+  &__menu-icon {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    transition: color var(--animation-speed) ease-in-out;
+
+    &--open-btn {
+      @include hover {
+        color: var(--color-purple);
+      }
     }
 
-    @include hover {
-      &:after {
-        width: 140px;
+    &--close-btn {
+      margin-left: auto;
+
+      @include hover {
+        color: var(--color-grey-dark);
+      }
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    padding: var(--header-padding);
+    background-color: var(--color-purple);
+    color: var(--color-white);
+    transform: translateX(100%);
+    transition: transform var(--animation-speed) ease-in-out;
+
+    &--active {
+      transform: translateX(0);
+    }
+
+    &-items {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      gap: var(--spacer-s);
+    }
+
+    &-item {
+      opacity: 0;
+
+      #{$self}__menu--active & {
+        @for $i from 1 through 7 {
+          &:nth-child(#{$i}n) {
+            opacity: 1;
+            transition: opacity 0.5s ease-in #{$i * 0.1}s;
+          }
+        }
+      }
+
+      :global(.social-icons__item:hover),
+      :global(.social-icons__item:focus) {
+        color: var(--color-grey-dark);
+      }
+    }
+
+    &-link {
+      @include hover-state('', var(--color-grey-dark));
+
+      position: relative;
+      align-self: flex-start;
+      color: var(--color-white);
+      text-decoration: none;
+      font-weight: var(--font-weight-bold);
+      font-size: 4rem;
+      line-height: 4.8rem;
+
+      @media screen and (min-width: $breakpoint-mobile) {
+        font-size: 6rem;
+        line-height: 7.2rem;
+      }
+
+      &--small {
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+        font-weight: var(--font-weight-medium);
+      }
+
+      &--home {
+        &:after {
+          content: 'Home';
+        }
+      }
+
+      &--about {
+        &:after {
+          content: 'About';
+        }
+      }
+
+      &--projects {
+        &:after {
+          content: 'Projects';
+        }
+      }
+
+      &--playground {
+        &:after {
+          content: 'Playground';
+        }
+      }
+
+      &--blog {
+        &:after {
+          content: 'Blog';
+        }
+      }
+
+      &--contact {
+        &:after {
+          content: 'Contact';
+        }
+      }
+
+      &--email {
+        &:after {
+          content: 'lauraricher@gmail.com';
+        }
+      }
+
+      &--phone {
+        &:after {
+          content: '07891384298';
+        }
       }
     }
   }

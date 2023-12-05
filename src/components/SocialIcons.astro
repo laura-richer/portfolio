@@ -1,0 +1,32 @@
+---
+import IconGithub from '@/icons/IconGithub.astro';
+import IconInstagram from '@/icons/IconInstagram.astro';
+---
+
+<nav class="social-icons">
+  <span>
+    <a href="https://github.com/laura-richer" target="_blank" rel="noopener noreferrer" class="social-icons__item">
+      <IconGithub />
+    </a>
+  </span>
+  <span>
+    <a href="https://www.instagram.com/the.amateur.pixel/" target="_blank" rel="noopener noreferrer" class="social-icons__item">
+      <IconInstagram />
+    </a>
+  </span>
+</nav>
+
+<style lang="scss">
+.social-icons {
+  display: flex;
+  gap: var(--spacer-xs);
+
+  &__item {
+    color: inherit;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    transition: color var(--animation-speed) ease-in-out;
+  }
+}
+</style>

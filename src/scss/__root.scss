@@ -13,7 +13,7 @@
   --h2-font-size: 3rem;
   --h3-font-size: 2.4rem;
 
-  --spacer-xs: 1rem;
+  --spacer-xs: 0.8rem;
   --spacer-s: 1.5rem;
   --spacer-m: 3.5rem;
   --spacer-l: 5rem;
@@ -27,9 +27,12 @@
 
   --font-weight-light: 200;
   --font-weight-regular: 400;
+  --font-weight-medium: 500;
   --font-weight-bold: 600;
 
   --header-height: 88px;
 
   --breakpoint-desktop: 1024px;
+
+  --animation-speed: 0.2s;
 }

@@ -1,50 +1,37 @@
 ---
-import Button from '@/atoms/Button.astro';
-import SectionHeader from '@/components/SectionHeader.astro';
+const allProjects = await Astro.glob('../content/project/*.md');
 
-const { count } = Astro.props;
+import SectionHeader from '@/components/SectionHeader.astro';
+import ProjectItem from '@/components/ProjectItem.astro';
 ---
 
-<div id="projects" class="project-list">
-  <div class="container project-list__container">
+<section id="projects" class="project-list">
+  <div class="container">
     <SectionHeader
       title="Projects"
-      copy="Dantooine. They're on Dantooine. Leave that to me. Send a distress signal, and inform the Senate that all on board were killed. I have traced the Rebel spies to her. Now she is my only link to finding their secret base. Hey, Luke!"
+      copy="Check out what I've been up to recently. From stylish interfaces to websites that run smoothly on any device. Take a look around and get a feel for the cool projects I've been working on!"
       titleColor="purple"
     />
 
     <div class="project-list__grid">
-      <p>project</p>
-      <p>project</p>
-      <p>project</p>
+      {allProjects.map((project) =>
+        <ProjectItem title={project.frontmatter.title} thumbnail={project.frontmatter.thumbnail} slug={project.frontmatter.slug}/>
+      )}
     </div>
-
-    {count &&
-      <div class="project-list__cta">
-        <Button text="See all projects" color="purple" />
-      </div>
-    }
-
   </div>
-</div>
+</section>
 
 <style lang="scss">
 @import '../scss/resources/breakpoints';
 
 .project-list {
   &__grid {
-    margin-top: var(--spacer-l);
+    display: grid;
+    gap: var(--spacer-s);
 
     @media screen and (min-width: $breakpoint-mobile) {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
     }
-  }
-
-  &__cta {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--spacer-xl);
   }
 }
 </style>

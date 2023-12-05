@@ -7,31 +7,73 @@ const ButtonElement = tag || 'a';
 <ButtonElement class={`button button--${color}`} href={link}>{text}</ButtonElement>
 
 <style lang="scss" is:global>
-  .button {
-    display: inline-block;
-    width: auto;
-    color: var(--color-white);
-    background-color: transparent;
-    font-size: 1.4rem;
-    font-weight: var(--font-weight-bold);
-    text-decoration: none;
-    text-transform: uppercase;
-    border: 2px solid var(--color-white);
-    padding: var(--spacer-xs) var(--spacer-s);
-    transition: background-color 0.2s ease-in-out;
-    cursor: pointer;
+// @import '../scss/resources/hover';
 
-    &--purple {
-      color: var(--color-purple);
-      border-color: var(--color-purple);
-    }
+.button {
+  --button-color: var(--color-white);
+  --button-hover-color: var(--color-grey);
+  --button-hover-accent-color: var(--color-black-alpha);
 
-    &:hover,
-    &:focus,
-    &:active {
-      .no-touchevents & {
-        background-color: var(--color-black-alpha);
+  &--purple {
+    --button-color: var(--color-purple);
+    --button-hover-color:var(--color-grey-dark);
+    --button-hover-accent-color: var(--color-grey);
+  }
+
+  &--blue {
+    --button-color: var(--color-blue);
+    --button-hover-color:var(--color-grey-dark);
+    --button-hover-accent-color: var(--color-white);
+  }
+
+  position: relative;
+  display: inline-block;
+  width: auto;
+  color: var(--button-color);
+  background-color: transparent;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid var(--button-color);
+  padding: var(--spacer-xs) var(--spacer-s);
+  transition: all var(--animation-speed) ease-in-out;
+  cursor: pointer;
+
+  &:after {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    height: 100%;
+    border: 2px solid transparent;
+    width: 0;
+    content: '';
+    box-sizing: content-box;
+    transition: all var(--animation-speed) ease-in-out;
+  }
+
+  // @include hover {
+  //   color: var(--button-hover-color);
+  //   background-color: var(--button-hover-accent-color);
+
+  //   &:after {
+  //     border-color: var(--button-hover-color);
+  //     width: 100%;
+  //   }
+  // }
+
+  &:hover,
+  &:focus,
+  &:active {
+    .no-touchevents & {
+      color: var(--button-hover-color);
+      background-color: var(--button-hover-accent-color);
+
+      &:after {
+        border-color: var(--button-hover-color);
+        width: 100%;
       }
     }
   }
+}
 </style>

@@ -1,18 +1,42 @@
 ---
-import SectionHeader from '@/components/SectionHeader.astro'
+const allBlogPosts = await Astro.glob('../content/blog/*.md');
+
+import SectionHeader from '@/components/SectionHeader.astro';
+import BlogItem from '@/components/BlogItem.astro';
 ---
 
-<div class="blog-list">
+<section id="blog" class="blog-list">
   <div class="container blog-list__container">
     <SectionHeader
-      title="Latest blog posts"
+      title="Blog"
       titleColor="blue"
     />
+
+    <div class="blog-list__items">
+      {allBlogPosts.map((blog) =>
+        <BlogItem
+          title={blog.frontmatter.title}
+          thumbnail={blog.frontmatter.thumbnail}
+          slug={blog.frontmatter.slug}
+          description={blog.frontmatter.description}
+        />
+      )}
+    </div>
   </div>
-</div>
+</section>
 
 <style lang="scss">
 .blog-list {
   background-color: var(--color-grey);
+
+  &__container {
+    max-width: var(--container-compact-max-width);
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-m);
+  }
 }
 </style>
