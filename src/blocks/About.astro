@@ -53,6 +53,14 @@ import SectionHeader from '@/components/SectionHeader.astro';
     flex-direction: column;
     gap: var(--spacer-m);
 
+    @media screen and (min-width: $breakpoint-tablet) {
+      gap: var(--spacer-s);
+    }
+
+    @media screen and (min-width: $breakpoint-desktop) {
+      gap: var(--spacer-m);
+    }
+
     &-link {
       @include hover-state('', var(--color-blue));
       position: relative;
@@ -63,7 +71,12 @@ import SectionHeader from '@/components/SectionHeader.astro';
       font-size: 3.2rem;
       line-height: 3.6rem;
 
-      @media screen and (min-width: $breakpoint-mobile) {
+      @media screen and (min-width: $breakpoint-tablet) {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+      }
+
+      @media screen and (min-width: $breakpoint-desktop) {
         font-size: 2.8rem;
         line-height: 3.2rem;
       }
