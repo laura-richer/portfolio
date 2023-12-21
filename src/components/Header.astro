@@ -39,28 +39,35 @@ const contactMenuItems = [
 <header class="header">
   <div class="header__container">
     <a href="#" class="header__title">Laura Richer</a>
-    <span class="header__menu-icon header__menu-icon--open-btn" role="button" aria-label="Open menu">
+    <button class="header__menu-icon header__menu-icon--open-btn" aria-label="Open menu">
       <IconBurger />
-    </span>
+    </button>
   </div>
 
   <div class="header__menu">
-    <span class="header__menu-icon header__menu-icon--close-btn" role="button" aria-label="Close menu">
+    <button class="header__menu-icon header__menu-icon--close-btn header__menu-tab-item" role="button" aria-label="Close menu">
       <IconClose />
-    </span>
+    </button>
 
     <nav class="header__menu-items">
       {menuItems.map((menuItem) =>
         <div class="header__menu-item">
-          <a href={menuItem.slug} class={`header__menu-link header__menu-link--${menuItem.classSuffix}`}>{menuItem.name}</a>
+          <a href={menuItem.slug} class={`header__menu-link header__menu-link--${menuItem.classSuffix} header__menu-tab-item`}>
+            {menuItem.name}
+          </a>
         </div>
       )}
 
-      <span class="header__menu-item"><SocialIcons /></span>
+      <span class="header__menu-item header__menu-social-links"><SocialIcons /></span>
 
       {contactMenuItems.map((contactMenuItem) =>
         <div class="header__menu-item">
-          <a href={contactMenuItem.slug} class={`header__menu-link header__menu-link--small header__menu-link--${contactMenuItem.classSuffix}`}>{contactMenuItem.name}</a>
+          <a
+            href={contactMenuItem.slug}
+            class={`header__menu-link header__menu-link--small header__menu-link--${contactMenuItem.classSuffix} header__menu-tab-item`}
+          >
+            {contactMenuItem.name}
+          </a>
         </div>
       )}
     </nav>
@@ -71,9 +78,17 @@ const contactMenuItems = [
   const menuButton = document.querySelectorAll('.header__menu-icon');
   const menu = document.querySelector('.header__menu');
   const navItems = document.querySelectorAll('.header__menu-item');
+  const navItemsToTab = document.querySelectorAll('.header__menu-tab-item');
+  const socialLinks = document.querySelectorAll('.header__menu-social-links a');
+
+  const allNavLinks = [...navItemsToTab, ...socialLinks];
+  let menuActive = false;
 
   const handleToggleMenu = () => {
     menu.classList.toggle('header__menu--active');
+    menuActive = !menuActive;
+
+    toggleTabIndex();
   };
 
   menuButton.forEach(button => {
@@ -83,6 +98,14 @@ const contactMenuItems = [
   navItems.forEach(item => {
     item.addEventListener('click', handleToggleMenu);
   });
+
+  const toggleTabIndex = () => {
+    allNavLinks.forEach(item => {
+      item.tabIndex = menuActive ? 0 : -1;
+    });
+  }
+
+  toggleTabIndex();
 </script>
 
 <style lang="scss">
@@ -122,6 +145,7 @@ const contactMenuItems = [
   }
 
   &__menu-icon {
+    all: unset;
     display: block;
     width: 3rem;
     height: 3rem;
