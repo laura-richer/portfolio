@@ -1,0 +1,19 @@
+---
+const { title, color } = Astro.props;
+---
+
+<span class={`h1 title title--${color}`}>{title}</span>
+
+<style lang="scss">
+.title {
+  color: var(--color-black);
+
+  &--purple {
+    color: var(--color-purple);
+  }
+
+  &--blue {
+    color: var(--color-blue);
+  }
+}
+</style>

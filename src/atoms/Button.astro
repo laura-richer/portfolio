@@ -2,9 +2,15 @@
 const { text, link, tag, color } = Astro.props;
 
 const ButtonElement = tag || 'a';
+const isExternal = link && link.indexOf('http') === 0;
 ---
 
-<ButtonElement class={`button button--${color}`} href={link}>{text}</ButtonElement>
+<ButtonElement
+  class={`button button--${color}`}
+  href={link} target={isExternal ? '_blank' : ''}
+  rel={isExternal ? 'noopener noreferrer' : ''}>
+    {text}
+</ButtonElement>
 
 <style lang="scss" is:global>
 // @import '../scss/resources/hover';

@@ -23,7 +23,7 @@ h4, .h4 {
 
 p {
   font-size: 1.4rem;
-  white-space: pre-wrap;
+  margin-bottom: var(--spacer-s);
 
   &:last-child {
     margin-bottom: 0;

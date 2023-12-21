@@ -1,26 +1,43 @@
 ---
+// const about = await Astro.glob('@/content/about.md');
 import SectionHeader from '@/components/SectionHeader.astro';
 ---
 
 <section id="about" class="about">
   <div class="container">
     <SectionHeader
-      title="About"
-      titleColor="purple"
+      title="About me"
+      titleColor="blue"
     />
     <div class="about__grid">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lectus sem, faucibus cursus lobortis in, vehicula in velit. Aenean dui elit, iaculis nec lacus non, laoreet viverra ipsum. Mauris gravida lorem felis, vitae mollis orci efficitur quis. Maecenas laoreet leo id aliquet sagittis. Maecenas a dignissim odio. Proin vitae libero vel urna efficitur elementum. Etiam ut purus ligula. Fusce dui arcu, dignissim ac bibendum sed, placerat in sapien. Proin id justo vestibulum, vestibulum lorem sed, luctus mi.<br/><br/>Quisque tempus convallis bibendum. Mauris cursus purus vel lacus consectetur, ac pulvinar turpis lobortis. Nullam sem enim, dapibus ac massa ut, pellentesque posuere neque. Curabitur cursus quis velit in porta. Mauris non feugiat lectus, ut vehicula ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris auctor erat eros, quis lacinia metus blandit sed. Sed et elit vitae nulla congue iaculis. Nam vel faucibus purus. Suspendisse sed feugiat odio. Suspendisse diam est, tempor sit amet nisi in, fermentum varius nulla. Nam erat lacus, luctus nec ultrices non, tincidunt ac nulla. Curabitur semper tempor leo, a aliquam nibh laoreet eu.</p>
+      <div>
+        <p>Hey, I'm a self taught, passionate frontend developer currently residing in Leeds, West Yorkshire.</p>
+
+        <p>Currently working for a digital agency in Leeds city center, I get to work on all sorts of amazing, varied projects. We predominantly use Vue for our builds, Vite for our build compiler, Strapi & Graphql for CMS & data providing. At this agency I've also had experience with Nuxt, Angular, Rest API, Webpack and Drupal.</p>
+
+        <p>I've built this site mostly as a bit of a playground, I tend to rebuild it every time I want to learn a new technology just to give the learning a bit of purpose. But it also serves as a platform to showcase some of the projects I work on in my own time.</p>
+
+        <p>I am always interested in taking on freelance work so if you have an idea for a project give me an email or call for a chat!</p>
+      </div>
+
       <div class="about__contact">
-        <a href="mailto:lauraricher@gmail.com" class="about__contact-link">lauraricher@gmail.com</a>
-        <a href="tel:07891384298" class="about__contact-link">07891384298</a>
+        <div class="about__contact-item">
+          <a href="mailto:lauraricher@gmail.com" class="about__contact-link about__contact-link--email">lauraricher@gmail.com</a>
+        </div>
+        <div class="about__contact-item">
+          <a href="tel:07891384298" class="about__contact-link about__contact-link--phone">07891384298</a>
+        </div>
       </div>
   </div>
 </section>
 
 <style lang="scss">
 @import '../scss/resources/breakpoints';
+@import '../scss/resources/hover';
 
 .about {
+  background-color: var(--color-grey);
+
   &__grid {
     display: grid;
     gap: var(--spacer-l);
@@ -37,16 +54,30 @@ import SectionHeader from '@/components/SectionHeader.astro';
     gap: var(--spacer-m);
 
     &-link {
+      @include hover-state('', var(--color-blue));
+      position: relative;
       text-decoration: none;
       color: currentColor;
       text-decoration: none;
       font-weight: var(--font-weight-bold);
-      font-size: 4rem;
-      line-height: 4.8rem;
+      font-size: 3.2rem;
+      line-height: 3.6rem;
 
       @media screen and (min-width: $breakpoint-mobile) {
         font-size: 2.8rem;
-        line-height: 2.4rem;
+        line-height: 3.2rem;
+      }
+
+      &--email {
+        &:after {
+          content: 'lauraricher@gmail.com';
+        }
+      }
+
+      &--phone {
+        &:after {
+          content: '07891384298';
+        }
       }
     }
   }

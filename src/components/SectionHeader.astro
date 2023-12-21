@@ -1,9 +1,11 @@
 ---
+import Title from '@/atoms/Title.astro';
+
 const { title, titleColor, copy } = Astro.props;
 ---
 
 <div class="section-header">
-  <h3 class={`h1 section-header__title section-header__title--${titleColor}`}>{title}</h3>
+  <Title title={title} color={titleColor}>
   {copy && <p class="section-header__copy">{copy}</p>}
 </div>
 

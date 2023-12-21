@@ -1,0 +1,186 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Button from '@/atoms/Button.astro';
+import IconClose from '@/icons/IconClose.astro';
+import IconGithub from '@/icons/IconGithub.astro';
+import Title from '@/atoms/Title.astro';
+
+const { frontmatter } = Astro.props;
+const { title, shortDescription, accentColor, stack, thumbnail, website, github } = frontmatter;
+
+const metaData = {
+  metaTitle: title,
+  metaDescription: shortDescription
+}
+
+const getFilenameFromPath = path => /[^/]*$/.exec(path)[0];
+const stackIcons = await Astro.glob('../icons/stack/*.astro');
+const projectStackIcons = stack.map(stackItem => {
+  return stackIcons.find(
+    icon => getFilenameFromPath(icon.file) === `Icon${stackItem}.astro`
+  );
+});
+---
+
+<MainLayout {metaData}>
+  <div class={`project-page-layout project-page-layout--${accentColor}`}>
+    <header class="project-page-layout__header">
+      {website &&
+        <Button text="View site" link={website} color={accentColor} />
+      }
+      <a class="project-page-layout__close-btn" href="/#projects">
+        <IconClose />
+      </a>
+    </header>
+
+    <article class="project-page-layout__body container">
+      <div class="project-page-layout__title">
+        <Title title={title} color={accentColor} />
+      </div>
+
+      <div class="project-page-layout__stack">
+        {projectStackIcons.map((projectStackIcon) =>
+          <span class="project-page-layout__stack-icon">
+            <projectStackIcon.default />
+          </span>
+        )}
+      </div>
+
+      <section class="project-page-layout__content">
+        <div>
+          <slot />
+
+          {github &&
+            <a class="project-page-layout__link" href={github} target="_blank" rel="noopener noreferrer">
+              <IconGithub/>
+              <span>{github}</span>
+            </a>
+          }
+        </div>
+
+        <img class="project-card__image-el" src={thumbnail} alt={title} />
+      </section>
+    </article>
+  </div>
+</MainLayout>
+
+<style lang="scss">
+@import '../scss/resources/breakpoints';
+@import '../scss/resources/hover';
+
+.project-page-layout {
+  $self: &;
+
+  --project-page-padding: var(--spacer-s);
+
+  @media screen and (min-width: $breakpoint-mobile) {
+    --project-page-padding: var(--spacer-m);
+  }
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  z-index: 999;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: var(--project-page-padding);
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-white);
+      opacity: 0.8;
+      z-index: -1;
+    }
+  }
+
+  &__close-btn {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    margin-left: auto;
+    cursor: pointer;
+    color: var(--color-black);
+    transition: color var(--animation-speed) ease-in-out;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: var(--project-page-padding);
+    gap: var(--spacer-s);
+
+    @media screen and (min-width: $breakpoint-mobile) {
+      padding-top: 0;
+      gap: var(--spacer-m);
+    }
+  }
+
+  &__title {
+    display: block;
+    text-align: center;
+  }
+
+  &__stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacer-s);
+
+    &-icon {
+      display: block;
+      height: 5rem;
+
+      :global(svg),
+      :global(img) {
+        width: auto;
+        height: 100%
+      }
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: var(--spacer-m);
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacer-m);
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    color: currentColor;
+    gap: var(--spacer-xs);
+    transition: color var(--animation-speed) ease-in-out;
+
+    :global(svg) {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &--purple {
+    #{$self}__close-btn,
+    #{$self}__link {
+      @include hover {
+        color: var(--color-purple);
+      }
+    }
+  }
+}
+</style>

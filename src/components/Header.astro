@@ -1,7 +1,39 @@
 ---
 import IconBurger from '@/icons/IconBurger.astro';
 import IconClose from '@/icons/IconClose.astro';
+// import MenuItem from '@/atoms/MenuItem.astro';
 import SocialIcons from '@/components/SocialIcons.astro';
+
+const menuItems = [
+  {
+    name: 'Home',
+    slug: '#',
+    classSuffix: 'home',
+  },
+  {
+    name: 'Projects',
+    slug: '#projects',
+    classSuffix: 'projects',
+  },
+  {
+    name: 'About',
+    slug: '#about',
+    classSuffix: 'about',
+  }
+];
+
+const contactMenuItems = [
+  {
+    name: 'lauraricher@gmail.com',
+    slug: 'mailto:lauraricher@gmail.com',
+    classSuffix: 'email',
+  },
+  {
+    name: '07891384298',
+    slug: 'tel:07891384298',
+    classSuffix: 'phone',
+  }
+];
 ---
 
 <header class="header">
@@ -18,25 +50,19 @@ import SocialIcons from '@/components/SocialIcons.astro';
     </span>
 
     <nav class="header__menu-items">
-      <div class="header__menu-item">
-        <a href="#" class="header__menu-link header__menu-link--home">Home</a>
-      </div>
-      <div class="header__menu-item">
-        <a href="#projects" class="header__menu-link header__menu-link--projects">Projects</a>
-      </div>
-      <div class="header__menu-item">
-        <a href="#blog" class="header__menu-link header__menu-link--blog">Blog</a>
-      </div>
-      <div class="header__menu-item">
-        <a href="#about" class="header__menu-link header__menu-link--about">About</a>
-      </div>
+      {menuItems.map((menuItem) =>
+        <div class="header__menu-item">
+          <a href={menuItem.slug} class={`header__menu-link header__menu-link--${menuItem.class}`}>{menuItem.name}</a>
+        </div>
+      )}
+
       <span class="header__menu-item"><SocialIcons /></span>
-      <div class="header__menu-item">
-        <a href="mailto:lauraricher@gmail.com" class="header__menu-link header__menu-link--small header__menu-link--email">lauraricher@gmail.com</a>
-      </div>
-      <div class="header__menu-item">
-        <a href="tel:07891384298" class="header__menu-link header__menu-link--small header__menu-link--phone">07891384298</a>
-      </div>
+
+      {contactMenuItems.map((contactMenuItem) =>
+        <div class="header__menu-item">
+          <a href={contactMenuItem.slug} class={`header__menu-link header__menu-link--small header__menu-link--${contactMenuItem.class}`}>{contactMenuItem.name}</a>
+        </div>
+      )}
     </nav>
   </div>
 </header>

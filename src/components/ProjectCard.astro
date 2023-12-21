@@ -1,28 +1,33 @@
 ---
-import Button from '@/atoms/Button.astro'
+import Button from '@/atoms/Button.astro';
+
 const { title, slug, thumbnail } = Astro.props;
 ---
 
-<div class="project-item">
-  <figure class="project-item__image">
-    <img class="project-item__image-el" src={thumbnail} alt={title} />
-  </figure>
+<a href={`/project/${slug}`} class="project-card">
+  <div class="project-card__inner">
+    <figure class="project-card__image">
+      <img class="project-card__image-el" src={thumbnail} alt={title} />
+    </figure>
 
-  <div class="project-item__content">
-    <span class="h4 project-item__title">{title}</span>
-    <Button tag="button" text="Read more" />
+    <div class="project-card__content">
+      <span class="h4 project-card__title">{title}</span>
+      <Button tag="button" text="Read more" />
+    </div>
   </div>
-</div>
+</a>
 
 <style lang="scss">
 @import '../scss/resources/hover';
 
-.project-item {
+.project-card {
   $self: &;
 
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
+  &__inner {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
 
   &__content {
     position: absolute;

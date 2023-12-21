@@ -1,8 +1,8 @@
 ---
-const allProjects = await Astro.glob('../content/project/*.md');
+const allProjects = await Astro.glob('../pages/project/*.md');
 
 import SectionHeader from '@/components/SectionHeader.astro';
-import ProjectItem from '@/components/ProjectItem.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
 ---
 
 <section id="projects" class="project-list">
@@ -15,7 +15,7 @@ import ProjectItem from '@/components/ProjectItem.astro';
 
     <div class="project-list__grid">
       {allProjects.map((project) =>
-        <ProjectItem title={project.frontmatter.title} thumbnail={project.frontmatter.thumbnail} slug={project.frontmatter.slug}/>
+        <ProjectCard title={project.frontmatter.title} thumbnail={project.frontmatter.thumbnail} slug={project.frontmatter.slug} />
       )}
     </div>
   </div>
