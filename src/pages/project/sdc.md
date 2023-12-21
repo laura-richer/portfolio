@@ -4,6 +4,7 @@ slug: 'sdc'
 title: 'Spotify data calculator'
 shortDescription: 'Built with Svelte 3 and Vite'
 thumbnail: '/images/projects/sdc-thumbnail.png'
+image: '/images/projects/sdc.png'
 stack: ['Svelte', 'Vite']
 website: 'https://spotify-data-calculator.vercel.app/'
 github: 'https://github.com/laura-richer/spotify-data-calculator'

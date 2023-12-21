@@ -4,6 +4,7 @@ slug: 'swiftly'
 title: 'SwiftLY'
 shortDescription: 'Leveraging the Spotify API, an app built with React, allowing users to soundtrack their day.'
 thumbnail: '/images/projects/swiftly-thumbnail.png'
+image: '/images/projects/swiftly.png'
 stack: ['React']
 website: 'https://swiftly-rouge.vercel.app/'
 github: 'https://github.com/laura-richer/swiftly'

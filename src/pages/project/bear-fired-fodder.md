@@ -4,6 +4,7 @@ slug: 'bear-fired-fodder'
 title: 'Bear Fired Fodder'
 shortDescription: 'Astro and Sanity stack for a simple, minimal, fast, user managed website.'
 thumbnail: '/images/projects/bear-fired-fodder-thumbnail.png'
+image: '/images/projects/bear-fired-fodder.png'
 stack: ['Astro', 'Sanity']
 website: 'https://bearfiredfodder.vercel.app/'
 accentColor: 'purple'

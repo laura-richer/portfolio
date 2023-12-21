@@ -6,7 +6,7 @@ import IconGithub from '@/icons/IconGithub.astro';
 import Title from '@/atoms/Title.astro';
 
 const { frontmatter } = Astro.props;
-const { title, shortDescription, accentColor, stack, thumbnail, website, github } = frontmatter;
+const { title, shortDescription, accentColor, stack, image, website, github } = frontmatter;
 
 const metaData = {
   metaTitle: title,
@@ -58,7 +58,7 @@ const projectStackIcons = stack.map(stackItem => {
           }
         </div>
 
-        <img class="project-card__image-el" src={thumbnail} alt={title} />
+        <img class="project-card__image-el" src={image} alt={title} />
       </section>
     </article>
   </div>
