@@ -52,7 +52,7 @@ const contactMenuItems = [
     <nav class="header__menu-items">
       {menuItems.map((menuItem) =>
         <div class="header__menu-item">
-          <a href={menuItem.slug} class={`header__menu-link header__menu-link--${menuItem.class}`}>{menuItem.name}</a>
+          <a href={menuItem.slug} class={`header__menu-link header__menu-link--${menuItem.classSuffix}`}>{menuItem.name}</a>
         </div>
       )}
 
@@ -60,7 +60,7 @@ const contactMenuItems = [
 
       {contactMenuItems.map((contactMenuItem) =>
         <div class="header__menu-item">
-          <a href={contactMenuItem.slug} class={`header__menu-link header__menu-link--small header__menu-link--${contactMenuItem.class}`}>{contactMenuItem.name}</a>
+          <a href={contactMenuItem.slug} class={`header__menu-link header__menu-link--small header__menu-link--${contactMenuItem.classSuffix}`}>{contactMenuItem.name}</a>
         </div>
       )}
     </nav>
