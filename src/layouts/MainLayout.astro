@@ -18,6 +18,17 @@ const siteMetaData = {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={siteMetaData.metaDescription || ''} />
     <title>{siteMetaData.metaTitle}</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE00V683D9"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZE00V683D9');
+    </script>
   </head>
   <body>
     <slot />
