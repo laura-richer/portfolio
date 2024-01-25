@@ -1,4 +1,5 @@
 ---
+id: 1
 layout: ../../layouts/ProjectPageLayout.astro
 slug: 'swiftly'
 title: 'SwiftLY'
@@ -9,6 +10,8 @@ stack: ['React']
 website: 'https://swiftly-rouge.vercel.app/'
 github: 'https://github.com/laura-richer/swiftly'
 accentColor: 'purple'
+prevSlug: 'sdc'
+nextSlug: 'vapepal'
 ---
 
 Taking inspiration from Spotify Wrapped and leveraging the Spotify API, this app allows users to create a unique individual soundtrack for them based on certain things about their day. The answers to the questions weight the outcome of the final playlist. The user also has the option to save the playlist to their Spotify account & share it with friends.

@@ -3,6 +3,10 @@ const allProjects = await Astro.glob('../pages/project/*.md');
 
 import SectionHeader from '@/components/SectionHeader.astro';
 import ProjectCard from '@/components/ProjectCard.astro';
+
+let orderedProects = allProjects.sort((a, b) => {
+  return a.frontmatter.id - b.frontmatter.id;
+}).reverse();
 ---
 
 <section id="projects" class="project-list">
@@ -14,7 +18,7 @@ import ProjectCard from '@/components/ProjectCard.astro';
     />
 
     <div class="project-list__grid">
-      {allProjects.map((project) =>
+      {orderedProects.map((project) =>
         <ProjectCard title={project.frontmatter.title} thumbnail={project.frontmatter.thumbnail} slug={project.frontmatter.slug} />
       )}
     </div>

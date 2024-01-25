@@ -1,4 +1,5 @@
 ---
+id: 0
 layout: ../../layouts/ProjectPageLayout.astro
 slug: 'vapepal'
 title: 'Vapepal'
@@ -8,6 +9,7 @@ image: '/images/projects/vapepal.png'
 stack: ['Wordpress', 'Jquery']
 website: 'https://www.vapepal.co.uk/'
 accentColor: 'purple'
+prevSlug: 'swiftly'
 ---
 
 Vapepal is an online eliquid store. They came to me with the brief for their flagship online store to build them an ecommerce site. The site was already designed so it was down to me to build the store.
