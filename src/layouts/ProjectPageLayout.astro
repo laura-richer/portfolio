@@ -139,24 +139,28 @@ const NextNavItem = nextSlug ? 'a' : 'span';
   }
 
   &__nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: var(--project-page-padding);
+    display: none;
 
-    :global(svg) {
-      width: 2rem;
-      height: 2rem;
-      cursor: pointer;
-    }
+    @media screen and (min-width: $breakpoint-mobile) {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: var(--project-page-padding);
 
-    &-item {
-      &--disabled {
-        pointer-events: none;
-        opacity: 0;
+      :global(svg) {
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+      }
+
+      &-item {
+        &--disabled {
+          pointer-events: none;
+          opacity: 0;
+        }
       }
     }
   }
