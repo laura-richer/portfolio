@@ -2,11 +2,13 @@
 import MainLayout from '@/layouts/MainLayout.astro';
 import Button from '@/atoms/Button.astro';
 import IconClose from '@/icons/IconClose.astro';
+import IconChevronLeft from '@/icons/IconChevronLeft.astro';
+import IconChevronRight from '@/icons/IconChevronRight.astro';
 import IconGithub from '@/icons/IconGithub.astro';
 import Title from '@/atoms/Title.astro';
 
 const { frontmatter } = Astro.props;
-const { title, shortDescription, accentColor, stack, image, website, github } = frontmatter;
+const { title, shortDescription, accentColor, stack, image, website, github, prevSlug, nextSlug } = frontmatter;
 
 const metaData = {
   metaTitle: title,
@@ -20,6 +22,9 @@ const projectStackIcons = stack.map(stackItem => {
     icon => getFilenameFromPath(icon.file) === `Icon${stackItem}.astro`
   );
 });
+
+const PrevNavItem = prevSlug ? 'a' : 'span';
+const NextNavItem = nextSlug ? 'a' : 'span';
 ---
 
 <MainLayout {metaData}>
@@ -32,6 +37,23 @@ const projectStackIcons = stack.map(stackItem => {
         <IconClose />
       </a>
     </header>
+
+    <div class="project-page-layout__nav">
+      <PrevNavItem
+        href={prevSlug && `/project/${prevSlug}`}
+        class={`project-page-layout__nav-item ${!prevSlug && 'project-page-layout__nav-item--disabled'}`}
+      >
+        <IconChevronLeft />
+      </PrevNavItem>
+
+
+      <NextNavItem
+        href={nextSlug && `/project/${nextSlug}`}
+        class={`project-page-layout__nav-item ${!nextSlug && 'project-page-layout__nav-item--disabled'}`}
+      >
+        <IconChevronRight />
+      </NextNavItem>
+    </div>
 
     <article class="project-page-layout__body container animate-section">
       <div class="project-page-layout__title">
@@ -80,6 +102,7 @@ const projectStackIcons = stack.map(stackItem => {
   position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   background-color: var(--color-white);
   z-index: 999;
 
@@ -113,6 +136,29 @@ const projectStackIcons = stack.map(stackItem => {
     cursor: pointer;
     color: var(--color-black);
     transition: color var(--animation-speed) ease-in-out;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--project-page-padding);
+
+    :global(svg) {
+      width: 2rem;
+      height: 2rem;
+      cursor: pointer;
+    }
+
+    &-item {
+      &--disabled {
+        pointer-events: none;
+        opacity: 0;
+      }
+    }
   }
 
   &__body {
@@ -180,7 +226,8 @@ const projectStackIcons = stack.map(stackItem => {
 
   &--purple {
     #{$self}__close-btn,
-    #{$self}__link {
+    #{$self}__link,
+    #{$self}__nav :global(svg) {
       @include hover {
         color: var(--color-purple);
       }

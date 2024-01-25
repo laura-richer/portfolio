@@ -1,4 +1,5 @@
 ---
+id: 3
 layout: ../../layouts/ProjectPageLayout.astro
 slug: 'bear-fired-fodder'
 title: 'Bear Fired Fodder'
@@ -8,6 +9,7 @@ image: '/images/projects/bear-fired-fodder.png'
 stack: ['Astro', 'Sanity']
 website: 'https://bearfiredfodder.vercel.app/'
 accentColor: 'purple'
+nextSlug: 'sdc'
 ---
 
 Bear Fired Fodder are a mobile wood fired pizza business who provide amazing pizza for special events, weddings & private parties.
