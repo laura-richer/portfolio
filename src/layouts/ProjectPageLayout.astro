@@ -33,7 +33,7 @@ const projectStackIcons = stack.map(stackItem => {
       </a>
     </header>
 
-    <article class="project-page-layout__body container">
+    <article class="project-page-layout__body container animate-section">
       <div class="project-page-layout__title">
         <Title title={title} color={accentColor} />
       </div>
@@ -63,6 +63,15 @@ const projectStackIcons = stack.map(stackItem => {
     </article>
   </div>
 </MainLayout>
+
+
+<script>
+import animateSection from '@/utils/animate-section';
+
+const blockToAnimate = document.querySelector('.animate-section');
+
+animateSection(blockToAnimate);
+</script>
 
 <style lang="scss">
 @import '../scss/resources/breakpoints';
