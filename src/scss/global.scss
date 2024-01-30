@@ -5,7 +5,9 @@
 @import './resources/fonts.scss';
 @import './resources/hover.scss';
 
-@import './base.scss';
+@import './_base.scss';
+@import './_typography.scss';
 @import './animate-section.scss';
 @import './container.scss';
-@import './typography.scss';
+@import './md.scss';
+

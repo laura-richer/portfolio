@@ -16,6 +16,11 @@ const menuItems = [
     classSuffix: 'projects',
   },
   {
+    name: 'Blog',
+    slug: '#blog',
+    classSuffix: 'blog',
+  },
+  {
     name: 'About',
     slug: '#about',
     classSuffix: 'about',
@@ -103,7 +108,7 @@ const contactMenuItems = [
     allNavLinks.forEach(item => {
       item.tabIndex = menuActive ? 0 : -1;
     });
-  }
+  };
 
   toggleTabIndex();
 </script>

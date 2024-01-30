@@ -1,0 +1,88 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Title from '@/atoms/Title.astro';
+import BlogList from '@/blocks/BlogList.astro';
+import InnerPageHeader from '@/components/InnerPageHeader.astro';
+
+const { frontmatter } = Astro.props;
+const { title, shortDescription, published, accentColor, image, id } = frontmatter;
+
+const metaData = {
+  metaTitle: title,
+  metaDescription: shortDescription
+}
+---
+
+<MainLayout {metaData}>
+  <div class={`blog-page-layout blog-page-layout--${accentColor}`}>
+    <InnerPageHeader accentColor="blue" closeUrl="/#blog" />
+
+    <article class="blog-page-layout__body container animate-section">
+      <div class="blog-page-layout__title">
+        <Title title={title} color={accentColor} />
+        <span class="h4">{published}</span>
+      </div>
+
+      <img class="blog-page-layout__image-el" src={image} alt={title} />
+
+      <section class="blog-page-layout__content md">
+        <slot />
+      </section>
+    </article>
+  </div>
+
+  <BlogList title="More blog posts" count="3" excludeId={id} />
+</MainLayout>
+
+<style lang="scss">
+@import '../scss/resources/breakpoints';
+@import '../scss/resources/hover';
+
+.blog-page-layout {
+  $self: &;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-white);
+  z-index: 999;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-s);
+
+    @media screen and (min-width: $breakpoint-mobile) {
+      padding-top: 0;
+      gap: var(--spacer-m);
+    }
+  }
+
+  &__content {
+    max-width: 640px;
+    margin: 0 auto;
+
+    @media screen and (min-width: $breakpoint-desktop) {
+      margin-top: var(--spacer-m);
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-s);
+    align-items: center;
+    text-align: center;
+  }
+
+  &--blue {
+    #{$self}__link,
+    #{$self}__nav :global(svg) {
+      @include hover {
+        color: var(--color-blue);
+      }
+    }
+  }
+}
+</style>

@@ -1,12 +1,12 @@
 ---
-const { text, link, tag, color } = Astro.props;
+const { text, link, tag, color, small } = Astro.props;
 
 const ButtonElement = tag || 'a';
 const isExternal = link && link.indexOf('http') === 0;
 ---
 
 <ButtonElement
-  class={`button button--${color}`}
+  class={`button button--${color} button--${small ? 'small' : ''}`}
   href={link} target={isExternal ? '_blank' : ''}
   rel={isExternal ? 'noopener noreferrer' : ''}>
     {text}
@@ -45,6 +45,11 @@ const isExternal = link && link.indexOf('http') === 0;
   padding: var(--spacer-xs) var(--spacer-s);
   transition: all var(--animation-speed) ease-in-out;
   cursor: pointer;
+
+  &--small {
+    padding: var(--spacer-xxs) var(--spacer-xs);
+
+  }
 
   &:after {
     position: absolute;

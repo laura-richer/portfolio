@@ -1,24 +1,35 @@
 ---
-const allBlogPosts = await Astro.glob('../content/blog/*.md');
+const allBlogPosts = await Astro.glob('../pages/blog/*.md');
 
 import SectionHeader from '@/components/SectionHeader.astro';
-import BlogItem from '@/components/BlogItem.astro';
+import BlogCard from '@/components/BlogCard.astro';
+
+const { title = 'Latest blog posts', count, excludeId } = Astro.props;
+
+let mappedPosts =
+  allBlogPosts.sort((a, b) => {
+    return a.frontmatter.id - b.frontmatter.id;
+  })
+  .reverse().filter((post) => {
+    return post.frontmatter.id !== excludeId;
+  })
+  .slice(0, count);
 ---
 
 <section id="blog" class="blog-list">
-  <div class="container blog-list__container">
+  <div class="container animate-section">
     <SectionHeader
-      title="Blog"
+      title={title}
       titleColor="blue"
     />
 
-    <div class="blog-list__items">
-      {allBlogPosts.map((blog) =>
-        <BlogItem
+    <div class="blog-list__grid">
+      {mappedPosts.map((blog) =>
+        <BlogCard
           title={blog.frontmatter.title}
+          description={blog.frontmatter.description}
           thumbnail={blog.frontmatter.thumbnail}
           slug={blog.frontmatter.slug}
-          description={blog.frontmatter.description}
         />
       )}
     </div>
@@ -29,14 +40,10 @@ import BlogItem from '@/components/BlogItem.astro';
 .blog-list {
   background-color: var(--color-grey);
 
-  &__container {
-    max-width: var(--container-compact-max-width);
-  }
-
-  &__items {
+  &__grid {
     display: flex;
     flex-direction: column;
-    gap: var(--spacer-m);
+    gap: var(--spacer-l);
   }
 }
 </style>
