@@ -6,14 +6,16 @@ import BlogCard from '@/components/BlogCard.astro';
 
 const { title = 'Latest blog posts', count, excludeId } = Astro.props;
 
-let mappedPosts =
+const sortedPosts =
   allBlogPosts.sort((a, b) => {
     return a.frontmatter.id - b.frontmatter.id;
-  })
-  .reverse().filter((post) => {
+  }).reverse();
+
+const filteredPosts = sortedPosts.filter((post) => {
     return post.frontmatter.id !== excludeId;
   })
-  .slice(0, count);
+
+const mappedPosts = filteredPosts.slice(0, count);
 ---
 
 <section id="blog" class="blog-list">
