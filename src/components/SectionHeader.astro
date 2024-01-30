@@ -1,12 +1,11 @@
 ---
 import Title from '@/atoms/Title.astro';
 
-const { title, titleColor, copy } = Astro.props;
+const { title, titleColor } = Astro.props;
 ---
 
 <div class="section-header">
   <Title title={title} color={titleColor}>
-  {copy && <p class="section-header__copy">{copy}</p>}
 </div>
 
 <style lang="scss">

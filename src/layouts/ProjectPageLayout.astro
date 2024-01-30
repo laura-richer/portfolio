@@ -1,11 +1,10 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
-import Button from '@/atoms/Button.astro';
-import IconClose from '@/icons/IconClose.astro';
 import IconChevronLeft from '@/icons/IconChevronLeft.astro';
 import IconChevronRight from '@/icons/IconChevronRight.astro';
 import IconGithub from '@/icons/IconGithub.astro';
 import Title from '@/atoms/Title.astro';
+import InnerPageHeader from '@/components/InnerPageHeader.astro';
 
 const { frontmatter } = Astro.props;
 const { title, shortDescription, accentColor, stack, image, website, github, prevSlug, nextSlug } = frontmatter;
@@ -29,14 +28,7 @@ const NextNavItem = nextSlug ? 'a' : 'span';
 
 <MainLayout {metaData}>
   <div class={`project-page-layout project-page-layout--${accentColor}`}>
-    <header class="project-page-layout__header">
-      {website &&
-        <Button text="View site" link={website} color={accentColor} />
-      }
-      <a class="project-page-layout__close-btn" href="/#projects" aria-label="Back to homepage">
-        <IconClose />
-      </a>
-    </header>
+    <InnerPageHeader accentColor="purple" closeUrl="/#projects" ctaLink={website} />
 
     <div class="project-page-layout__nav">
       <PrevNavItem
@@ -69,7 +61,7 @@ const NextNavItem = nextSlug ? 'a' : 'span';
       </div>
 
       <section class="project-page-layout__content">
-        <div>
+        <div class="markdown">
           <slot />
 
           {github &&
@@ -80,7 +72,7 @@ const NextNavItem = nextSlug ? 'a' : 'span';
           }
         </div>
 
-        <img class="project-card__image-el" src={image} alt={title} />
+        <img class="project-page-layout__image-el" src={image} alt={title} />
       </section>
     </article>
   </div>
@@ -106,42 +98,10 @@ const NextNavItem = nextSlug ? 'a' : 'span';
   background-color: var(--color-white);
   z-index: 999;
 
-  &__header {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: var(--project-page-padding);
-
-    &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--color-white);
-      opacity: 0.8;
-      z-index: -1;
-    }
-  }
-
-  &__close-btn {
-    display: block;
-    width: 3rem;
-    height: 3rem;
-    margin-left: auto;
-    cursor: pointer;
-    color: var(--color-black);
-    transition: color var(--animation-speed) ease-in-out;
-  }
-
   &__nav {
     display: none;
 
-    @media screen and (min-width: $breakpoint-mobile) {
+    @media screen and (min-width: $breakpoint-desktop) {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
@@ -229,7 +189,6 @@ const NextNavItem = nextSlug ? 'a' : 'span';
   }
 
   &--purple {
-    #{$self}__close-btn,
     #{$self}__link,
     #{$self}__nav :global(svg) {
       @include hover {

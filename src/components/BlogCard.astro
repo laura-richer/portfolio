@@ -1,0 +1,57 @@
+---
+import Button from '@/atoms/Button.astro';
+
+const { title, slug, thumbnail, description } = Astro.props;
+---
+
+<a href={`/blog/${slug}`} class="blog-card">
+  <figure class="blog-card__image">
+    <img class="blog-card__image-el" src={thumbnail} alt={title} />
+  </figure>
+
+  <div class="blog-card__content">
+    <span class="h3 blog-card__title">{title}</span>
+    <p class="blog-card__description">{description}</p>
+    <Button tag="span" color="blue" text="Read more" small={true} />
+  </div>
+</a>
+
+<style lang="scss">
+@import '../scss/resources/breakpoints';
+
+.blog-card {
+  $self: &;
+
+  --blog-card-description-margin: var(--spacer-s);
+  --blog-card-content-gap: var(--spacer-s);
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    --blog-card-description-margin: var(--spacer-m);
+    --blog-card-content-gap: var(--spacer-m);
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--blog-card-content-gap);
+  text-decoration: none;
+  color: var(--color-black);
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    flex-direction: row;
+  }
+
+  &__image {
+    max-width: 25rem;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: var(--spacer-xs);
+  };
+
+  &__description {
+    margin-bottom: var(--blog-card-description-margin);
+  }
+}
+</style>

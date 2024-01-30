@@ -1,0 +1,78 @@
+---
+import IconClose from '@/icons/IconClose.astro';
+import Button from '@/atoms/Button.astro';
+
+const { accentColor, ctaLink, closeUrl } = Astro.props;
+---
+
+<header class={`inner-page-header inner-page-header--${accentColor}`}>
+  {ctaLink &&
+    <Button text="View site" link={ctaLink} color={accentColor} />
+  }
+
+  <a class="inner-page-header__close-btn" href={closeUrl} aria-label="Back to homepage">
+    <IconClose />
+  </a>
+</header>
+
+<style lang="scss">
+@import '../scss/resources/breakpoints';
+@import '../scss/resources/hover';
+
+.inner-page-header {
+  $self: &;
+
+  --inner-page-header-padding: var(--spacer-s);
+
+  @media screen and (min-width: $breakpoint-mobile) {
+    --inner-page-header-padding: var(--spacer-m);
+  }
+
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--inner-page-header-padding);
+  z-index: 10;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white);
+    opacity: 0.8;
+    z-index: -1;
+  }
+
+  &__close-btn {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    margin-left: auto;
+    cursor: pointer;
+    color: var(--color-black);
+    transition: color var(--animation-speed) ease-in-out;
+  }
+
+  &--purple {
+    #{$self}__close-btn {
+      @include hover {
+        color: var(--color-purple);
+      }
+    }
+  }
+
+  &--blue {
+    #{$self}__close-btn {
+      @include hover {
+        color: var(--color-blue);
+      }
+    }
+  }
+}
+</style>
