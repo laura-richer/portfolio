@@ -41,8 +41,12 @@ const { title, slug, thumbnail, description } = Astro.props;
   }
 
   &__image {
-    max-width: 25rem;
+    width: 100%;
     flex-shrink: 0;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      max-width: 25rem;
+    }
   }
 
   &__title {
