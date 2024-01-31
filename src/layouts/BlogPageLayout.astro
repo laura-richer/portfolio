@@ -15,24 +15,23 @@ const metaData = {
 
 <MainLayout {metaData}>
   <div class={`blog-page-layout blog-page-layout--${accentColor}`}>
-    <div class="blog-page-layout__inner">
+    <div class="blog-page-layout__header">
       <div class="blog-page-layout__progress-bar"></div>
-
       <InnerPageHeader accentColor="blue" closeUrl="/#blog" />
-
-      <article class="blog-page-layout__body container animate-section">
-        <div class="blog-page-layout__title">
-          <Title title={title} color={accentColor} />
-          <span class="h4">{published}</span>
-        </div>
-
-        <img class="blog-page-layout__image-el" src={image} alt={title} />
-
-        <section class="blog-page-layout__content markdown">
-          <slot />
-        </section>
-      </article>
     </div>
+
+    <article class="blog-page-layout__body container animate-section">
+      <div class="blog-page-layout__title">
+        <Title title={title} color={accentColor} />
+        <span class="h4">{published}</span>
+      </div>
+
+      <img class="blog-page-layout__image-el" src={image} alt={title} />
+
+      <section class="blog-page-layout__content markdown">
+        <slot />
+      </section>
+    </article>
 
     <BlogList title="More blog posts" count="3" excludeId={id} />
   </div>

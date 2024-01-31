@@ -2,7 +2,7 @@
 import IconClose from '@/icons/IconClose.astro';
 import Button from '@/atoms/Button.astro';
 
-const { accentColor, ctaLink, closeUrl, showProgressBar } = Astro.props;
+const { accentColor, ctaLink, closeUrl } = Astro.props;
 ---
 
 <header class={`inner-page-header inner-page-header--${accentColor}`}>
@@ -58,8 +58,6 @@ const { accentColor, ctaLink, closeUrl, showProgressBar } = Astro.props;
     color: var(--color-black);
     transition: color var(--animation-speed) ease-in-out;
   }
-
-
 
   &--purple {
     #{$self}__close-btn {
