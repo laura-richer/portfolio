@@ -15,23 +15,27 @@ const metaData = {
 
 <MainLayout {metaData}>
   <div class={`blog-page-layout blog-page-layout--${accentColor}`}>
-    <InnerPageHeader accentColor="blue" closeUrl="/#blog" />
+    <div class="blog-page-layout__inner">
+      <div class="blog-page-layout__progress-bar"></div>
 
-    <article class="blog-page-layout__body container animate-section">
-      <div class="blog-page-layout__title">
-        <Title title={title} color={accentColor} />
-        <span class="h4">{published}</span>
-      </div>
+      <InnerPageHeader accentColor="blue" closeUrl="/#blog" />
 
-      <img class="blog-page-layout__image-el" src={image} alt={title} />
+      <article class="blog-page-layout__body container animate-section">
+        <div class="blog-page-layout__title">
+          <Title title={title} color={accentColor} />
+          <span class="h4">{published}</span>
+        </div>
 
-      <section class="blog-page-layout__content markdown">
-        <slot />
-      </section>
-    </article>
+        <img class="blog-page-layout__image-el" src={image} alt={title} />
+
+        <section class="blog-page-layout__content markdown">
+          <slot />
+        </section>
+      </article>
+    </div>
+
+    <BlogList title="More blog posts" count="3" excludeId={id} />
   </div>
-
-  <BlogList title="More blog posts" count="3" excludeId={id} />
 </MainLayout>
 
 <style lang="scss">
@@ -77,12 +81,35 @@ const metaData = {
     text-align: center;
   }
 
+  &__progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--spacer-xxs);
+    z-index: 20;
+    scale: 0 1;
+    transform-origin: left;
+    animation: progressBar linear;
+    animation-timeline: scroll();
+  }
+
+  @keyframes progressBar {
+    to {
+      scale: 1 1;
+    }
+  }
+
   &--blue {
     #{$self}__link,
     #{$self}__nav :global(svg) {
       @include hover {
         color: var(--color-blue);
       }
+    }
+
+    #{$self}__progress-bar {
+      background-color: var(--color-blue)
     }
   }
 }
