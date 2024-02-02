@@ -3,8 +3,8 @@ id: 0
 layout: ../../layouts/BlogPageLayout.astro
 title: 'Optimizing Web Performance'
 slug: 'optimizing-web-performance'
-thumbnail: '/images/projects/bear-fired-fodder-thumbnail.png'
-image: '/images/projects/bear-fired-fodder.png'
+thumbnail: '/images/blog/optimizing-web-performance-thumbnail.png'
+image: '/images/blog/optimizing-web-performance.png'
 description: 'In the fast-paced world of the web, where users demand instant access to information, optimizing the performance of your website is essential. A slow-loading website not only frustrates visitors but can also impact search engine rankings. In this post I will explore various techniques and best practices to ensure your website is lightning-fast.'
 published: '7th Jan 2024'
 accentColor: 'blue'

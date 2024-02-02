@@ -3,8 +3,8 @@ id: 2
 layout: ../../layouts/BlogPageLayout.astro
 title: 'Elevating My Frontend Development Workflow: Essential VS Code Extensions'
 slug: 'essential-vs-code-extensions'
-thumbnail: '/images/projects/bear-fired-fodder-thumbnail.png'
-image: '/images/projects/bear-fired-fodder.png'
+thumbnail: '/images/blog/essential-vs-code-extensions-thumbnail.png'
+image: '/images/blog/essential-vs-code-extensions.png'
 description: "In this blog post, I'll share my insights on several must-have VS Code extensions that have significantly improved my frontend development experience."
 accentColor: 'blue'
 published: '30th Jan 2024'

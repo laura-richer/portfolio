@@ -3,8 +3,8 @@ id: 1
 layout: ../../layouts/BlogPageLayout.astro
 title: 'Navigating the Vue 2 to Vue 3 Migration'
 slug: 'navigating-the-vue-2-to-vue-3-migration'
-thumbnail: '/images/projects/bear-fired-fodder-thumbnail.png'
-image: '/images/projects/bear-fired-fodder.png'
+thumbnail: '/images/blog/navigating-the-vue-2-to-vue-3-migration-thumbnail.png'
+image: '/images/blog/navigating-the-vue-2-to-vue-3-migration.png'
 description: 'In the ever-evolving landscape of front-end development, staying up-to-date with the latest technologies is not just a choice but a necessity. As a frontend developer, I recently embarked on the journey of migrating a project from Vue 2 to Vue 3.'
 published: '21st Jan 2024'
 accentColor: 'blue'
