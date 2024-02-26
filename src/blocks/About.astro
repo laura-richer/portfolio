@@ -1,6 +1,18 @@
 ---
 // const about = await Astro.glob('@/content/about.md');
 import SectionHeader from '@/components/SectionHeader.astro';
+
+const getFilenameFromPath = path => /[^/]*$/.exec(path)[0];
+const stackIcons = await Astro.glob('../icons/stack/*.astro');
+
+const stack = ['Vue', 'Vite', 'Graphql', 'Apollo', 'Strapi', 'Sanity', 'Astro', 'Svelte'];
+
+const projectStackIcons = stack.map(stackItem => {
+  console.log(stackItem);
+  return stackIcons.find(
+    icon => getFilenameFromPath(icon.file) === `Icon${stackItem}.astro`
+  );
+});
 ---
 
 <section id="about" class="about">
@@ -9,8 +21,17 @@ import SectionHeader from '@/components/SectionHeader.astro';
       title="About me"
       titleColor="purple"
     />
+
+    <div class="about__stack">
+      {projectStackIcons.map((projectStackIcon) =>
+        <span class="about__stack-icon">
+          <projectStackIcon.default />
+        </span>
+      )}
+    </div>
+
     <div class="about__grid">
-      <div>
+      <div class="about__content">
         <p>Hey, I'm a self taught, passionate frontend developer currently residing in Leeds, West Yorkshire.</p>
 
         <p>Currently working for a digital agency in Leeds city center, I get to work on all sorts of amazing, varied projects. We predominantly use Vue for our builds, Vite for our build compiler, Strapi & Graphql for CMS & data providing. At this agency I've also had experience with Nuxt, Angular, Rest API, Webpack and Drupal.</p>
@@ -28,6 +49,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
           <a href="tel:07891384298" class="about__contact-link about__contact-link--phone">07891384298</a>
         </div>
       </div>
+    </div>
   </div>
 </section>
 
@@ -43,6 +65,26 @@ import SectionHeader from '@/components/SectionHeader.astro';
     @media screen and (min-width: $breakpoint-tablet) {
       grid-template-columns: 2fr 1fr;
       gap: var(--spacer-xl);
+    }
+  }
+
+  &__stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacer-s);
+    margin-bottom: var(--spacer-l);
+
+    &-icon {
+      display: block;
+      height: 3rem;
+
+      :global(svg),
+      :global(img) {
+        width: auto;
+        height: 100%
+      }
     }
   }
 

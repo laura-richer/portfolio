@@ -2,6 +2,7 @@
 id: 2
 layout: ../../layouts/BlogPageLayout.astro
 title: 'Elevating My Frontend Development Workflow: Essential VS Code Extensions'
+shortTitle: 'Essential VS Code Extensions'
 slug: 'essential-vs-code-extensions'
 thumbnail: '/images/blog/essential-vs-code-extensions-thumbnail.png'
 image: '/images/blog/essential-vs-code-extensions.png'

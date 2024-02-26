@@ -5,7 +5,7 @@ import BlogList from '@/blocks/BlogList.astro';
 import InnerPageHeader from '@/components/InnerPageHeader.astro';
 
 const { frontmatter } = Astro.props;
-const { title, shortDescription, published, accentColor, image, id } = frontmatter;
+const { title, shortTitle, shortDescription, published, accentColor, image, id } = frontmatter;
 
 const metaData = {
   metaTitle: title,
@@ -20,7 +20,12 @@ const metaData = {
 
     <article class="blog-page-layout__body container animate-section">
       <div class="blog-page-layout__title">
-        <Title title={title} color={accentColor} />
+        <div class="blog-page-layout__title--desktop">
+          <Title title={title} color={accentColor} />
+        </div>
+        <div class="blog-page-layout__title--mobile">
+          <Title title={shortTitle || title} color={accentColor} />
+        </div>
         <span class="h4">{published}</span>
       </div>
 
@@ -76,6 +81,20 @@ const metaData = {
     gap: var(--spacer-s);
     align-items: center;
     text-align: center;
+
+    &--mobile {
+      @media screen and (min-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        display: block;
+      }
+    }
   }
 
   &__progress-bar {

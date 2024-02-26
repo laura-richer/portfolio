@@ -89,6 +89,12 @@ const contactMenuItems = [
   const allNavLinks = [...navItemsToTab, ...socialLinks];
   let menuActive = false;
 
+  const toggleTabIndex = () => {
+    allNavLinks.forEach(item => {
+      item.tabIndex = menuActive ? 0 : -1;
+    });
+  };
+
   const handleToggleMenu = () => {
     menu.classList.toggle('header__menu--active');
     menuActive = !menuActive;
@@ -103,12 +109,6 @@ const contactMenuItems = [
   navItems.forEach(item => {
     item.addEventListener('click', handleToggleMenu);
   });
-
-  const toggleTabIndex = () => {
-    allNavLinks.forEach(item => {
-      item.tabIndex = menuActive ? 0 : -1;
-    });
-  };
 
   toggleTabIndex();
 </script>
