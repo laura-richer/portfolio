@@ -20,12 +20,7 @@ const metaData = {
 
     <article class="blog-page-layout__body container animate-section">
       <div class="blog-page-layout__title">
-        <div class="blog-page-layout__title--desktop">
-          <Title title={title} color={accentColor} />
-        </div>
-        <div class="blog-page-layout__title--mobile">
-          <Title title={shortTitle || title} color={accentColor} />
-        </div>
+        <Title title={title} shortTitle={shortTitle} color={accentColor} />
         <span class="h4">{published}</span>
       </div>
 
@@ -81,20 +76,6 @@ const metaData = {
     gap: var(--spacer-s);
     align-items: center;
     text-align: center;
-
-    &--mobile {
-      @media screen and (min-width: $breakpoint-tablet) {
-        display: none;
-      }
-    }
-
-    &--desktop {
-      display: none;
-
-      @media screen and (min-width: $breakpoint-tablet) {
-        display: block;
-      }
-    }
   }
 
   &__progress-bar {
