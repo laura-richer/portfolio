@@ -5,13 +5,63 @@ import SectionHeader from '@/components/SectionHeader.astro';
 const getFilenameFromPath = path => /[^/]*$/.exec(path)[0];
 const stackIcons = await Astro.glob('../icons/stack/*.astro');
 
-const stack = ['Vue', 'Vite', 'Graphql', 'Apollo', 'Strapi', 'Sanity', 'Astro', 'Svelte'];
+const stack = [{
+  title: 'Vue',
+  link: 'https://vuejs.org/',
+  },
+  {
+    title: 'Svelte',
+    link: 'https://svelte.dev/',
+  },
+  {
+    title: 'React',
+    link: 'https://reactjs.org/',
+  },
+  {
+    title: 'Typescript',
+    link: 'https://www.typescriptlang.org/',
+  },
+  {
+    title: 'Vite',
+    link: 'https://vitejs.dev/',
+  },
+  {
+    title: 'Graphql',
+    link: 'https://graphql.org/',
+  },
+  {
+    title: 'Apollo',
+    link: 'https://www.apollographql.com/',
+  },
+  {
+    title: 'Scss',
+    link: 'https://sass-lang.com/',
+  },
+  {
+    title: 'Astro',
+    link: 'https://astro.build/',
+  },
+  {
+    title: 'Strapi',
+    link: 'https://strapi.io/',
+  },
+  {
+    title: 'Sanity',
+    link: 'https://www.sanity.io/',
+  },
+  {
+    title: 'Drupal',
+    link: 'https://www.drupal.org/',
+  }
+];
 
 const projectStackIcons = stack.map(stackItem => {
-  console.log(stackItem);
-  return stackIcons.find(
-    icon => getFilenameFromPath(icon.file) === `Icon${stackItem}.astro`
-  );
+  return {
+    icon: stackIcons.find(
+      icon => getFilenameFromPath(icon.file) === `Icon${stackItem.title}.astro`
+    ),
+    link: stackItem.link,
+  }
 });
 ---
 
@@ -24,9 +74,9 @@ const projectStackIcons = stack.map(stackItem => {
 
     <div class="about__stack">
       {projectStackIcons.map((projectStackIcon) =>
-        <span class="about__stack-icon">
-          <projectStackIcon.default />
-        </span>
+        <a href={projectStackIcon.link} target="_blank" rel="noopener noreferrer" class="about__stack-icon">
+          <projectStackIcon.icon.default />
+        </a>
       )}
     </div>
 
@@ -74,16 +124,22 @@ const projectStackIcons = stack.map(stackItem => {
     justify-content: center;
     align-items: center;
     gap: var(--spacer-s);
-    margin-bottom: var(--spacer-l);
+    max-width: 60rem;
+    margin: 0 auto var(--spacer-l);
 
     &-icon {
       display: block;
       height: 3rem;
+      transition: scale var(--animation-speed) ease-in-out;
 
       :global(svg),
       :global(img) {
         width: auto;
         height: 100%
+      }
+
+      &:hover {
+        scale: 1.1;
       }
     }
   }

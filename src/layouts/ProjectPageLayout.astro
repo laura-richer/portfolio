@@ -48,7 +48,7 @@ const NextNavItem = nextSlug ? 'a' : 'span';
       </NextNavItem>
     </div>
 
-    <article class="project-page-layout__body container animate-section">
+    <section class="project-page-layout__body container animate-section">
       <div class="project-page-layout__title">
         <Title title={title} color={accentColor} />
       </div>
@@ -61,29 +61,31 @@ const NextNavItem = nextSlug ? 'a' : 'span';
         )}
       </div>
 
-      <section class="project-page-layout__content">
-        <article class="markdown">
-          <slot />
-        </article>
+      <section class="project-page-layout__content-wrapper">
+        <div class="project-page-layout__content">
+          <article class="markdown">
+            <slot />
+          </article>
 
-        <div class="project-page-layout__link-list">
-          {website &&
-            <a class="project-page-layout__link" href={website} target="_blank" rel="noopener noreferrer">
-              <span class="project-page-layout__link-icon"><IconWeb/></span>
-              <span>{website}</span>
-            </a>
-          }
-          {github &&
-            <a class="project-page-layout__link" href={github} target="_blank" rel="noopener noreferrer">
-              <span class="project-page-layout__link-icon"><IconGithub/></span>
-              <span>{github}</span>
-            </a>
-          }
+          <div class="project-page-layout__link-list">
+            {website &&
+              <a class="project-page-layout__link" href={website} target="_blank" rel="noopener noreferrer">
+                <span class="project-page-layout__link-icon"><IconWeb/></span>
+                <span>{website}</span>
+              </a>
+            }
+            {github &&
+              <a class="project-page-layout__link" href={github} target="_blank" rel="noopener noreferrer">
+                <span class="project-page-layout__link-icon"><IconGithub/></span>
+                <span>{github}</span>
+              </a>
+            }
+          </div>
         </div>
 
         <img class="project-page-layout__image-el" src={image} alt={title} />
       </section>
-    </article>
+    </section>
   </div>
 </MainLayout>
 
@@ -169,7 +171,7 @@ const NextNavItem = nextSlug ? 'a' : 'span';
     }
   }
 
-  &__content {
+  &__content-wrapper {
     display: grid;
     gap: var(--spacer-m);
 
@@ -177,6 +179,12 @@ const NextNavItem = nextSlug ? 'a' : 'span';
       grid-template-columns: 1fr 1fr;
       gap: var(--spacer-m);
     }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-s);
   }
 
   &__link-list {
