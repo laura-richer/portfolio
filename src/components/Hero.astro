@@ -14,6 +14,7 @@ import Button from '@/atoms/Button.astro';
     <Button text="See more" link="#projects" />
   </div>
   <img
+    src="/images/hero.png"
     data-image="/images/hero.png"
     data-mobile-image="/images/hero-mobile.png"
     class="hero__image"
@@ -33,9 +34,6 @@ let mobileBreakpoint = detectBreakpoint(detectScreenSize);
 
 const setImage = () => {
   heroImageElement.src = mobileBreakpoint ? mobileImage : image;
-  console.log(heroImageElement.src);
-  console.log(mobileImage);
-  console.log(image);
 };
 
 const handleResize = debounce(() => {
