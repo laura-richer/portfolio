@@ -1,8 +1,12 @@
 ---
+import * as contact from '@/content/config/contact.md';
+
 import IconBurger from '@/icons/IconBurger.astro';
 import IconClose from '@/icons/IconClose.astro';
 // import MenuItem from '@/atoms/MenuItem.astro';
 import SocialIcons from '@/components/SocialIcons.astro';
+
+const { email, phone } = contact.frontmatter;
 
 const menuItems = [
   {
@@ -29,13 +33,13 @@ const menuItems = [
 
 const contactMenuItems = [
   {
-    name: 'lauraricher@gmail.com',
-    slug: 'mailto:lauraricher@gmail.com',
+    name: email,
+    slug: `mailto:${email}`,
     classSuffix: 'email',
   },
   {
-    name: '07891384298',
-    slug: 'tel:07891384298',
+    name: phone,
+    slug: `tel:${phone}`,
     classSuffix: 'phone',
   }
 ];

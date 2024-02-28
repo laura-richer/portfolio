@@ -1,4 +1,6 @@
 ---
+import * as projects from '@/content/sections/projects.md';
+
 import MainLayout from '@/layouts/MainLayout.astro';
 import IconChevronLeft from '@/icons/IconChevronLeft.astro';
 import IconChevronRight from '@/icons/IconChevronRight.astro';
@@ -8,7 +10,8 @@ import Title from '@/atoms/Title.astro';
 import InnerPageHeader from '@/components/InnerPageHeader.astro';
 
 const { frontmatter } = Astro.props;
-const { title, shortDescription, accentColor, stack, image, website, github, prevSlug, nextSlug } = frontmatter;
+const { title, shortDescription, stack, image, website, github, prevSlug, nextSlug } = frontmatter;
+const { accentColor } = projects.frontmatter;
 
 const metaData = {
   metaTitle: title,

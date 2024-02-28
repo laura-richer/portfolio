@@ -1,7 +1,7 @@
 ---
 import Button from '@/atoms/Button.astro';
 
-const { title, slug, thumbnail, description } = Astro.props;
+const { title, slug, thumbnail, description, accentColor } = Astro.props;
 ---
 
 <a href={`/blog/${slug}`} class="blog-card">
@@ -12,7 +12,7 @@ const { title, slug, thumbnail, description } = Astro.props;
   <div class="blog-card__content">
     <span class="h3 blog-card__title">{title}</span>
     <p class="blog-card__description">{description}</p>
-    <Button tag="span" color="blue" text="Read more" small={true} />
+    <Button tag="span" color={accentColor} text="Read more" small={true} />
   </div>
 </a>
 

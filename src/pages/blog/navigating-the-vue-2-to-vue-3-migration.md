@@ -7,7 +7,6 @@ thumbnail: '/images/blog/navigating-the-vue-2-to-vue-3-migration-thumbnail.png'
 image: '/images/blog/navigating-the-vue-2-to-vue-3-migration.png'
 description: 'In the ever-evolving landscape of front-end development, staying up-to-date with the latest technologies is not just a choice but a necessity. As a frontend developer, I recently embarked on the journey of migrating a project from Vue 2 to Vue 3.'
 published: '21st Jan 2024'
-accentColor: 'blue'
 ---
 
 In the ever-evolving landscape of front-end development, staying up-to-date with the latest technologies is not just a choice but a necessity. As a frontend developer, I recently embarked on the journey of migrating a project from Vue 2 to Vue 3. One of the most significant shifts was transitioning from the Composition API to the Options API. In this blog post, I'll share my experiences and insights into the migration process, shedding light on the rationale behind embracing the Options API over the Composition API.

@@ -7,7 +7,6 @@ slug: 'essential-vs-code-extensions'
 thumbnail: '/images/blog/essential-vs-code-extensions-thumbnail.png'
 image: '/images/blog/essential-vs-code-extensions.png'
 description: "In this blog post, I'll share my insights on several must-have VS Code extensions that have significantly improved my frontend development experience."
-accentColor: 'blue'
 published: '30th Jan 2024'
 ---
 

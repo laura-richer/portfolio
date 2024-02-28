@@ -1,59 +1,15 @@
 ---
-// const about = await Astro.glob('@/content/about.md');
+import * as about from '@/content/sections/about.md';
+import * as contact from '@/content/config/contact.md';
+
 import SectionHeader from '@/components/SectionHeader.astro';
+
+const { title, stack, accentColor } = about.frontmatter;
+const { email, phone } = contact.frontmatter;
+
 
 const getFilenameFromPath = path => /[^/]*$/.exec(path)[0];
 const stackIcons = await Astro.glob('../icons/stack/*.astro');
-
-const stack = [{
-  title: 'Vue',
-  link: 'https://vuejs.org/',
-  },
-  {
-    title: 'Svelte',
-    link: 'https://svelte.dev/',
-  },
-  {
-    title: 'React',
-    link: 'https://reactjs.org/',
-  },
-  {
-    title: 'Typescript',
-    link: 'https://www.typescriptlang.org/',
-  },
-  {
-    title: 'Vite',
-    link: 'https://vitejs.dev/',
-  },
-  {
-    title: 'Graphql',
-    link: 'https://graphql.org/',
-  },
-  {
-    title: 'Apollo',
-    link: 'https://www.apollographql.com/',
-  },
-  {
-    title: 'Scss',
-    link: 'https://sass-lang.com/',
-  },
-  {
-    title: 'Astro',
-    link: 'https://astro.build/',
-  },
-  {
-    title: 'Strapi',
-    link: 'https://strapi.io/',
-  },
-  {
-    title: 'Sanity',
-    link: 'https://www.sanity.io/',
-  },
-  {
-    title: 'Drupal',
-    link: 'https://www.drupal.org/',
-  }
-];
 
 const projectStackIcons = stack.map(stackItem => {
   return {
@@ -68,8 +24,8 @@ const projectStackIcons = stack.map(stackItem => {
 <section id="about" class="about">
   <div class="container animate-section">
     <SectionHeader
-      title="About me"
-      titleColor="purple"
+      title={title}
+      titleColor={accentColor}
     />
 
     <div class="about__stack">
@@ -81,22 +37,16 @@ const projectStackIcons = stack.map(stackItem => {
     </div>
 
     <div class="about__grid">
-      <div class="about__content">
-        <p>Hey, I'm a self taught, passionate frontend developer currently residing in Leeds, West Yorkshire.</p>
-
-        <p>Currently working for a digital agency in Leeds city center, I get to work on all sorts of amazing, varied projects. We predominantly use Vue for our builds, Vite for our build compiler, Strapi & Graphql for CMS & data providing. At this agency I've also had experience with Nuxt, Angular, Rest API, Webpack and Drupal.</p>
-
-        <p>I've built this site mostly as a bit of a playground, I tend to rebuild it every time I want to learn a new technology just to give the learning a bit of purpose. But it also serves as a platform to showcase some of the projects I work on in my own time.</p>
-
-        <p>I am always interested in taking on freelance work so if you have an idea for a project give me an email or call for a chat!</p>
+      <div class="about__content markdown">
+        <about.Content />
       </div>
 
       <div class="about__contact">
         <div class="about__contact-item">
-          <a href="mailto:lauraricher@gmail.com" class="about__contact-link about__contact-link--email">lauraricher@gmail.com</a>
+          <a href={`mailto:${email}`} class="about__contact-link about__contact-link--email">{email}</a>
         </div>
         <div class="about__contact-item">
-          <a href="tel:07891384298" class="about__contact-link about__contact-link--phone">07891384298</a>
+          <a href={`tel:${phone}`} class="about__contact-link about__contact-link--phone">{phone}</a>
         </div>
       </div>
     </div>

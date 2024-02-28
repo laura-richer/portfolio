@@ -9,7 +9,6 @@ image: '/images/projects/swiftly.png'
 stack: ['React']
 website: 'https://swiftly-rouge.vercel.app/'
 github: 'https://github.com/laura-richer/swiftly'
-accentColor: 'purple'
 prevSlug: 'sdc'
 nextSlug: 'vapepal'
 ---

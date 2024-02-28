@@ -1,8 +1,56 @@
 ---
-accentColor: 'blue'
 title: 'About me'
-email: 'lauraricher@gmail.com'
-phone: '07891384298'
+accentColor: 'purple'
+stack: [
+  {
+    title: 'Vue',
+    link: 'https://vuejs.org/',
+  },
+  {
+    title: 'Svelte',
+    link: 'https://svelte.dev/',
+  },
+  {
+    title: 'React',
+    link: 'https://reactjs.org/',
+  },
+  {
+    title: 'Typescript',
+    link: 'https://www.typescriptlang.org/',
+  },
+  {
+    title: 'Vite',
+    link: 'https://vitejs.dev/',
+  },
+  {
+    title: 'Graphql',
+    link: 'https://graphql.org/',
+  },
+  {
+    title: 'Apollo',
+    link: 'https://www.apollographql.com/',
+  },
+  {
+    title: 'Scss',
+    link: 'https://sass-lang.com/',
+  },
+  {
+    title: 'Astro',
+    link: 'https://astro.build/',
+  },
+  {
+    title: 'Strapi',
+    link: 'https://strapi.io/',
+  },
+  {
+    title: 'Sanity',
+    link: 'https://www.sanity.io/',
+  },
+  {
+    title: 'Drupal',
+    link: 'https://www.drupal.org/',
+  }
+]
 ---
 
 Hey, I'm a self taught, passionate frontend developer currently residing in Leeds, West Yorkshire.

@@ -1,16 +1,20 @@
 ---
+import * as contact from '@/content/config/contact.md';
+
 import IconGithub from '@/icons/IconGithub.astro';
 import IconInstagram from '@/icons/IconInstagram.astro';
+
+const { github, instagram } = contact.frontmatter;
 ---
 
 <nav class="social-icons">
   <span>
-    <a href="https://github.com/laura-richer" target="_blank" rel="noopener noreferrer" aria-label="Github" class="social-icons__item">
+    <a href={github} target="_blank" rel="noopener noreferrer" aria-label="Github" class="social-icons__item">
       <IconGithub />
     </a>
   </span>
   <span>
-    <a href="https://www.instagram.com/the.amateur.pixel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icons__item">
+    <a href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icons__item">
       <IconInstagram />
     </a>
   </span>

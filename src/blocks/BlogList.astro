@@ -1,10 +1,12 @@
 ---
+import * as blog from '@/content/sections/blog.md';
 const allBlogPosts = await Astro.glob('../pages/blog/*.md');
 
 import SectionHeader from '@/components/SectionHeader.astro';
 import BlogCard from '@/components/BlogCard.astro';
 
 const { title = 'Latest blog posts', count, excludeId } = Astro.props;
+const { accentColor } = blog.frontmatter;
 
 const sortedPosts =
   allBlogPosts.sort((a, b) => {
@@ -22,7 +24,7 @@ const mappedPosts = filteredPosts.slice(0, count);
   <div class="container animate-section blog-list__container">
     <SectionHeader
       title={title}
-      titleColor="blue"
+      titleColor={accentColor}
     />
 
     <div class="blog-list__grid">
@@ -32,6 +34,7 @@ const mappedPosts = filteredPosts.slice(0, count);
           description={blog.frontmatter.description}
           thumbnail={blog.frontmatter.thumbnail}
           slug={blog.frontmatter.slug}
+          accentColor={accentColor}
         />
       )}
     </div>

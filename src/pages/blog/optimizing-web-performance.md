@@ -7,7 +7,6 @@ thumbnail: '/images/blog/optimizing-web-performance-thumbnail.png'
 image: '/images/blog/optimizing-web-performance.png'
 description: 'In the fast-paced world of the web, where users demand instant access to information, optimizing the performance of your website is essential. A slow-loading website not only frustrates visitors but can also impact search engine rankings. In this post I will explore various techniques and best practices to ensure your website is lightning-fast.'
 published: '7th Jan 2024'
-accentColor: 'blue'
 ---
 
 In the fast-paced world of the web, where users demand instant access to information, optimizing the performance of your website is essential. A slow-loading website not only frustrates visitors but can also impact search engine rankings. As a frontend developer, it's crucial to prioritize and implement strategies that enhance web performance. In this post I will explore various techniques and best practices to ensure your website is lightning-fast. So let's break some different techniques down;

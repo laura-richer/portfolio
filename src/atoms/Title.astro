@@ -1,29 +1,14 @@
 ---
-const { title, shortTitle, color } = Astro.props;
+const { title, color } = Astro.props;
 ---
 
-<span class={`h1 title title--desktop title--${color}`}>{title}</span>
-<span class={`h1 title title--mobile title--${color}`}>{shortTitle || title}</span>
+<span class={`h1 title title--${color}`}>{title}</span>
 
 <style lang="scss">
 @import '../scss/resources/breakpoints';
 
 .title {
   color: var(--color-black);
-
-  &--mobile {
-    @media screen and (min-width: $breakpoint-tablet) {
-      display: none;
-    }
-  }
-
-  &--desktop {
-    display: none;
-
-    @media screen and (min-width: $breakpoint-tablet) {
-      display: block;
-    }
-  }
 
   &--purple {
     color: var(--color-purple);

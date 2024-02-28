@@ -8,7 +8,6 @@ thumbnail: '/images/projects/bear-fired-fodder-thumbnail.png'
 image: '/images/projects/bear-fired-fodder.png'
 stack: ['Astro', 'Sanity']
 website: 'https://bearfiredfodder.vercel.app/'
-accentColor: 'purple'
 nextSlug: 'sdc'
 ---
 

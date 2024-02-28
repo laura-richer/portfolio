@@ -9,7 +9,6 @@ image: '/images/projects/sdc.png'
 stack: ['Svelte']
 website: 'https://spotify-data-calculator.vercel.app/'
 github: 'https://github.com/laura-richer/spotify-data-calculator'
-accentColor: 'purple'
 prevSlug: 'bear-fired-fodder'
 nextSlug: 'swiftly'
 ---

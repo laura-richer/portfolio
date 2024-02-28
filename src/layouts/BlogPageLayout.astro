@@ -1,11 +1,14 @@
 ---
+import * as blog from '@/content/sections/blog.md';
+
 import MainLayout from '@/layouts/MainLayout.astro';
-import Title from '@/atoms/Title.astro';
+import DynamicTitle from '@/atoms/DynamicTitle.astro';
 import BlogList from '@/blocks/BlogList.astro';
 import InnerPageHeader from '@/components/InnerPageHeader.astro';
 
 const { frontmatter } = Astro.props;
-const { title, shortTitle, shortDescription, published, accentColor, image, id } = frontmatter;
+const { title, shortTitle, shortDescription, published, image, id } = frontmatter;
+const { accentColor } = blog.frontmatter;
 
 const metaData = {
   metaTitle: title,
@@ -16,11 +19,11 @@ const metaData = {
 <MainLayout {metaData}>
   <div class={`blog-page-layout blog-page-layout--${accentColor}`}>
     <div class="blog-page-layout__progress-bar"></div>
-    <InnerPageHeader accentColor="blue" closeUrl="/#blog" />
+    <InnerPageHeader accentColor={accentColor} closeUrl="/#blog" />
 
     <article class="blog-page-layout__body container animate-section">
       <div class="blog-page-layout__title">
-        <Title title={title} shortTitle={shortTitle} color={accentColor} />
+        <DynamicTitle title={title} shortTitle={shortTitle} color={accentColor} />
         <span class="h4">{published}</span>
       </div>
 
@@ -107,6 +110,19 @@ const metaData = {
 
     #{$self}__progress-bar {
       background-color: var(--color-blue)
+    }
+  }
+
+  &--purple {
+    #{$self}__link,
+    #{$self}__nav :global(svg) {
+      @include hover {
+        color: var(--color-purple);
+      }
+    }
+
+    #{$self}__progress-bar {
+      background-color: var(--color-purple)
     }
   }
 }

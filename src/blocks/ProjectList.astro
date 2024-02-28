@@ -1,8 +1,11 @@
 ---
+import * as projects from '@/content/sections/projects.md';
 const allProjects = await Astro.glob('../pages/project/*.md');
 
 import SectionHeader from '@/components/SectionHeader.astro';
 import ProjectCard from '@/components/ProjectCard.astro';
+
+const { title, accentColor } = projects.frontmatter;
 
 let orderedProjects = allProjects.sort((a, b) => {
   return a.frontmatter.id - b.frontmatter.id;
@@ -12,8 +15,8 @@ let orderedProjects = allProjects.sort((a, b) => {
 <section id="projects" class="project-list">
   <div class="container animate-section">
     <SectionHeader
-      title="Projects"
-      titleColor="purple"
+      title={title}
+      titleColor={accentColor}
     />
 
     <div class="project-list__grid">

@@ -8,7 +8,6 @@ thumbnail: '/images/projects/vapepal-thumbnail.png'
 image: '/images/projects/vapepal.png'
 stack: ['Wordpress', 'Jquery']
 website: 'https://www.vapepal.co.uk/'
-accentColor: 'purple'
 prevSlug: 'swiftly'
 ---
 

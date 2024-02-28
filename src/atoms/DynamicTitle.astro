@@ -1,0 +1,36 @@
+---
+import Title from '@/atoms/Title.astro';
+
+const { title, shortTitle, color } = Astro.props;
+---
+
+<div class="dynamic-title" data-title={title} data-short-title={shortTitle}>
+  <Title color={color} />
+</div>
+
+<script>
+  import debounce from 'lodash/debounce';
+  import detectBreakpoint from '@/utils/detect-breakpoint';
+  import addResizeListener from '@/utils/resize-handler';
+
+  const titleWrapper = document.querySelector('.dynamic-title');
+  const titleElement = titleWrapper.querySelector('.h1');
+
+  const { title, shortTitle } = titleWrapper.dataset;
+  const mobileTitle = shortTitle || title;
+
+  const detectScreenSize = 'mobile';
+  let mobileBreakpoint = detectBreakpoint(detectScreenSize);
+
+  const setTitle = () => {
+    titleElement.innerHTML = mobileBreakpoint ? mobileTitle : title;
+  };
+
+  const handleResize = debounce(() => {
+    mobileBreakpoint = detectBreakpoint(detectScreenSize);
+    setTitle();
+  }, 300);
+
+  setTitle();
+  addResizeListener(handleResize);
+  </script>
