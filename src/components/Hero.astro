@@ -1,7 +1,5 @@
 ---
 import Button from '@/atoms/Button.astro';
-import heroImage from '@/assets/hero.png';
-import heroImageMobile from '@/assets/hero-mobile.png';
 ---
 
 <div class="hero">
@@ -17,7 +15,7 @@ import heroImageMobile from '@/assets/hero-mobile.png';
   </div>
   <img
     data-image="/images/hero.png"
-    data-mobile-image="images/hero-mobile.png"
+    data-mobile-image="/images/hero-mobile.png"
     class="hero__image"
     alt="I design and build beautiful responsive, eCommerce and CMS driven websites." />
 </div>
@@ -35,6 +33,9 @@ let mobileBreakpoint = detectBreakpoint(detectScreenSize);
 
 const setImage = () => {
   heroImageElement.src = mobileBreakpoint ? mobileImage : image;
+  console.log(heroImageElement.src);
+  console.log(mobileImage);
+  console.log(image);
 };
 
 const handleResize = debounce(() => {
