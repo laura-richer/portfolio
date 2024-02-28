@@ -11,7 +11,6 @@ import SocialIcons from '@/components/SocialIcons.astro';
 </footer>
 
 <style lang="scss">
-@import '../scss/resources/breakpoints';
 @import '../scss/resources/hover';
 
 .footer {
@@ -23,11 +22,6 @@ import SocialIcons from '@/components/SocialIcons.astro';
     justify-content: center;
     padding-top: var(--spacer-s);
     padding-bottom: var(--spacer-s);
-
-    @media screen and (min-width: $breakpoint-mobile) {
-      padding-top: var(--spacer-xs);
-      padding-bottom: var( --spacer-xs);
-    }
   }
 
   :global(.social-icons) {

@@ -27,9 +27,13 @@ const { title, shortTitle, color } = Astro.props;
   };
 
   const handleResize = debounce(() => {
-    mobileBreakpoint = detectBreakpoint(detectScreenSize);
+    const resizedBreakpoint = detectBreakpoint(detectScreenSize);
+
+    if (mobileBreakpoint === resizedBreakpoint) return;
+
+    mobileBreakpoint = resizedBreakpoint;
     setTitle();
-  }, 300);
+  }, 100);
 
   setTitle();
   addResizeListener(handleResize);

@@ -6,7 +6,7 @@ const { title, slug, thumbnail, description, accentColor } = Astro.props;
 
 <a href={`/blog/${slug}`} class="blog-card">
   <figure class="blog-card__image">
-    <img class="blog-card__image-el" src={thumbnail} alt={title} />
+    <img class="blog-card__image-el" loading="lazy" src={thumbnail} alt={title} />
   </figure>
 
   <div class="blog-card__content">

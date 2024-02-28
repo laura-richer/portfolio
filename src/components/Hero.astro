@@ -1,6 +1,7 @@
 ---
 import Button from '@/atoms/Button.astro';
 import heroImage from '@/assets/hero.png';
+import heroImageMobile from '@/assets/hero-mobile.png';
 ---
 
 <div class="hero">
@@ -14,8 +15,40 @@ import heroImage from '@/assets/hero.png';
     </h2>
     <Button text="See more" link="#projects" />
   </div>
-  <img src={heroImage.src} class="hero__image" alt="I design and build beautiful responsive, eCommerce and CMS driven websites."></img>
+  <img
+    data-image={heroImage.src}
+    data-mobile-image={heroImageMobile.src}
+    class="hero__image"
+    alt="I design and build beautiful responsive, eCommerce and CMS driven websites." />
 </div>
+
+<script>
+import debounce from 'lodash/debounce';
+import detectBreakpoint from '@/utils/detect-breakpoint';
+import addResizeListener from '@/utils/resize-handler';
+
+const heroImageElement = document.querySelector('.hero__image');
+const { image, mobileImage } = heroImageElement.dataset;
+
+const detectScreenSize = 'mobile';
+let mobileBreakpoint = detectBreakpoint(detectScreenSize);
+
+const setImage = () => {
+  heroImageElement.src = mobileBreakpoint ? mobileImage : image;
+};
+
+const handleResize = debounce(() => {
+  const resizedBreakpoint = detectBreakpoint(detectScreenSize);
+
+  if (mobileBreakpoint === resizedBreakpoint) return;
+
+  mobileBreakpoint = resizedBreakpoint;
+  setImage();
+}, 100);
+
+setImage();
+addResizeListener(handleResize);
+</script>
 
 <style lang="scss">
 .hero {
