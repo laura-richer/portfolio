@@ -5,7 +5,7 @@ const { title, shortTitle, color } = Astro.props;
 ---
 
 <div class="dynamic-title" data-title={title} data-short-title={shortTitle}>
-  <Title color={color} />
+  <Title color={color} title={title} />
 </div>
 
 <script>
