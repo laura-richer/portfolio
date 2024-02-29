@@ -17,6 +17,7 @@ const projectStackIcons = stack.map(stackItem => {
       icon => getFilenameFromPath(icon.file) === `Icon${stackItem.title}.astro`
     ),
     link: stackItem.link,
+    title: stackItem.title
   }
 });
 ---
@@ -30,7 +31,7 @@ const projectStackIcons = stack.map(stackItem => {
 
     <div class="about__stack">
       {projectStackIcons.map((projectStackIcon) =>
-        <a href={projectStackIcon.link} target="_blank" rel="noopener noreferrer" class="about__stack-icon">
+        <a href={projectStackIcon.link} target="_blank" rel="noopener noreferrer" aria-label={projectStackIcon.title} class="about__stack-icon">
           <projectStackIcon.icon.default />
         </a>
       )}
