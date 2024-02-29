@@ -13,17 +13,18 @@ const { title, shortTitle, color } = Astro.props;
   import detectBreakpoint from '@/utils/detect-breakpoint';
   import addResizeListener from '@/utils/resize-handler';
 
-  const titleWrapper = document.querySelector('.dynamic-title');
-  const titleElement = titleWrapper?.querySelector('.h1');
+  const titleWrapperElement = document.querySelector('.dynamic-title');
+  let titleElement;
 
-  const { title, shortTitle } = titleWrapper.dataset;
-  const mobileTitle = shortTitle || title;
+  if (titleWrapperElement) titleElement = titleWrapperElement?.querySelector('.h1');
 
   const detectScreenSize = 'mobile';
   let mobileBreakpoint = detectBreakpoint(detectScreenSize);
 
   const setTitle = () => {
-    titleElement.innerHTML = mobileBreakpoint ? mobileTitle : title;
+    const { title, shortTitle } = titleWrapperElement.dataset;
+
+    titleElement.innerHTML = mobileBreakpoint ? shortTitle : title;
   };
 
   const handleResize = debounce(() => {
@@ -35,6 +36,12 @@ const { title, shortTitle, color } = Astro.props;
     setTitle();
   }, 100);
 
-  setTitle();
-  addResizeListener(handleResize);
+  const init = () => {
+    if (!titleWrapperElement) return;
+
+    setTitle();
+    addResizeListener(handleResize);
+  }
+
+  init();
   </script>
