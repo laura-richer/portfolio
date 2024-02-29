@@ -27,12 +27,12 @@ import detectBreakpoint from '@/utils/detect-breakpoint';
 import addResizeListener from '@/utils/resize-handler';
 
 const heroImageElement = document.querySelector('.hero__image');
-const { image, mobileImage } = heroImageElement.dataset;
 
 const detectScreenSize = 'mobile';
 let mobileBreakpoint = detectBreakpoint(detectScreenSize);
 
 const setImage = () => {
+  const { image, mobileImage } = heroImageElement.dataset;
   heroImageElement.src = mobileBreakpoint ? mobileImage : image;
 };
 
@@ -45,8 +45,14 @@ const handleResize = debounce(() => {
   setImage();
 }, 100);
 
-setImage();
-addResizeListener(handleResize);
+const init = () => {
+  if (!heroImageElement) return;
+
+  setImage();
+  addResizeListener(handleResize);
+}
+
+init();
 </script>
 
 <style lang="scss">
