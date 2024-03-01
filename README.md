@@ -1,4 +1,4 @@
-Built in the Astro framework using `.md` to populate the content
+Built with the Astro framework using `.md` files to populate the content
 
 ### Prerequisits
 - nvm
