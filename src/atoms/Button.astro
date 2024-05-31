@@ -13,8 +13,6 @@ const isExternal = link && link.indexOf('http') === 0;
 </ButtonElement>
 
 <style lang="scss" is:global>
-// @import '../scss/resources/hover';
-
 .button {
   --button-color: var(--color-white);
   --button-hover-color: var(--color-grey);
@@ -62,16 +60,6 @@ const isExternal = link && link.indexOf('http') === 0;
     box-sizing: content-box;
     transition: all var(--animation-speed) ease-in-out;
   }
-
-  // @include hover {
-  //   color: var(--button-hover-color);
-  //   background-color: var(--button-hover-accent-color);
-
-  //   &:after {
-  //     border-color: var(--button-hover-color);
-  //     width: 100%;
-  //   }
-  // }
 
   &:hover,
   &:focus,
