@@ -1,0 +1,31 @@
+---
+import '@/scss/global.scss';
+
+const { metaData } = Astro.props;
+
+const siteMetaData = {
+  metaTitle: `${metaData?.metaTitle || 'Frontend developer, Leeds - West Yorkshire'} | Laura Richer`,
+  metaDescription:
+    metaData?.metaDescription ||
+    `Hey, I'm a self taught, passionate frontend developer currently residing in Leeds, West Yorkshire.`,
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={siteMetaData.metaDescription || ''} />
+    <title>{siteMetaData.metaTitle}</title>
+  </head>
+  <body>
+    <slot />
+
+    <script src="./main-layout.ts"></script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-1DRKKTSLJ5"></script>
+    <script is:inline async src="/js/ga.js"></script>
+  </body>
+</html>

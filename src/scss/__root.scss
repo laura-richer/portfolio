@@ -1,10 +1,10 @@
 :root {
   --color-purple: #7645c0;
   --color-blue: #2890b8;
-  --color-white: #ffffff;
+  --color-white: #fff;
   --color-grey: #ececec;
   --color-grey-dark: #2c2c2c;
-  --color-black: #111111;
+  --color-black: #111;
   --color-black-alpha: #11111190;
 
   --base-font-size: 1.4rem;
@@ -31,8 +31,8 @@
   --container-compact-max-width: 768px;
   --breakpoint-mobile: 540px;
 
-  --font-family-logo: Lobster, Roboto, arial, sans-serif;
-  --font-family-body: Roboto, arial, sans-serif;
+  --font-family-logo: 'Lobster', 'Roboto', arial, sans-serif;
+  --font-family-body: 'Roboto', arial, sans-serif;
 
   --font-weight-light: 200;
   --font-weight-regular: 400;

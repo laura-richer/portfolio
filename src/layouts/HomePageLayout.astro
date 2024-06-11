@@ -1,17 +1,16 @@
 ---
-import MainLayout from '@/layouts/MainLayout.astro';
-import Header from '@/components/Header.astro';
+import MainLayout from '@/layouts/MainLayout/MainLayout.astro';
+import Header from '@/components/Header/Header.astro';
 import Footer from '@/components/Footer.astro';
 
 const metaData = {
   metaTitle: 'Frontend developer, Leeds - West Yorkshire',
   metaDescription: `Hey, I'm a self taught, passionate frontend developer currently residing in Leeds, West Yorkshire.`,
-}
-
+};
 ---
 
 <MainLayout {metaData}>
   <Header />
   <slot />
   <Footer />
-</MainLayout
+</MainLayout>

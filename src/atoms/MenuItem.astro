@@ -3,5 +3,7 @@ const { slug, name, classSuffix, size } = Astro.props;
 ---
 
 <div class="menu-item">
-  <a href={slug} class={`menu-item__link menu-item__link--${size} menu-item__link--${classSuffix}`}>{name}</a>
+  <a href={slug} class={`menu-item__link menu-item__link--${size} menu-item__link--${classSuffix}`}>
+    {name}
+  </a>
 </div>

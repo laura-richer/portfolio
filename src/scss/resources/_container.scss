@@ -1,6 +1,6 @@
 @mixin container {
-  padding: var(--spacer-l) var(--spacer-s);
   max-width: var(--container-max-width);
+  padding: var(--spacer-l) var(--spacer-s);
   margin: 0 auto;
 
   @media screen and (min-width: $breakpoint-mobile) {
@@ -9,7 +9,7 @@
 }
 
 @mixin container-compact {
-  padding: 0 var(--spacer-s);
   max-width: var(--container-compact-max-width);
+  padding: 0 var(--spacer-s);
   margin: 0 auto;
 }

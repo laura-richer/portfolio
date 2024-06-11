@@ -7,38 +7,43 @@ import ProjectCard from '@/components/ProjectCard.astro';
 
 const { title, accentColor } = projects.frontmatter;
 
-let orderedProjects = allProjects.sort((a, b) => {
-  return a.frontmatter.id - b.frontmatter.id;
-}).reverse();
+let orderedProjects = allProjects
+  .sort((a, b) => {
+    return a.frontmatter.id - b.frontmatter.id;
+  })
+  .reverse();
 ---
 
 <section id="projects" class="project-list">
   <div class="container animate-section">
-    <SectionHeader
-      title={title}
-      titleColor={accentColor}
-    />
+    <SectionHeader title={title} titleColor={accentColor} />
 
     <div class="project-list__grid">
-      {orderedProjects.map((project) =>
-        <ProjectCard title={project.frontmatter.title} thumbnail={project.frontmatter.thumbnail} slug={project.frontmatter.slug} />
-      )}
+      {
+        orderedProjects.map(project => (
+          <ProjectCard
+            title={project.frontmatter.title}
+            thumbnail={project.frontmatter.thumbnail}
+            slug={project.frontmatter.slug}
+          />
+        ))
+      }
     </div>
   </div>
 </section>
 
 <style lang="scss">
-@import '../scss/resources/breakpoints';
+  @import '@/scss/resources/breakpoints';
 
-.project-list {
-  &__grid {
-    display: grid;
-    gap: var(--spacer-s);
+  .project-list {
+    &__grid {
+      display: grid;
+      gap: var(--spacer-s);
 
-    @media screen and (min-width: $breakpoint-mobile) {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+      @media screen and (min-width: $breakpoint-mobile) {
+        gap: 0;
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   }
-}
 </style>

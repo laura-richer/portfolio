@@ -17,43 +17,43 @@ const { title, slug, thumbnail, description, accentColor } = Astro.props;
 </a>
 
 <style lang="scss">
-@import '../scss/resources/breakpoints';
+  @import '@/scss/resources/breakpoints';
 
-.blog-card {
-  --blog-card-description-margin: var(--spacer-s);
-  --blog-card-content-gap: var(--spacer-s);
-
-  @media screen and (min-width: $breakpoint-tablet) {
-    --blog-card-description-margin: var(--spacer-m);
-    --blog-card-content-gap: var(--spacer-m);
-  }
-
-  display: flex;
-  flex-direction: column;
-  gap: var(--blog-card-content-gap);
-  text-decoration: none;
-  color: var(--color-black);
-
-  @media screen and (min-width: $breakpoint-tablet) {
-    flex-direction: row;
-  }
-
-  &__image {
-    width: 100%;
-    flex-shrink: 0;
+  .blog-card {
+    --blog-card-description-margin: var(--spacer-s);
+    --blog-card-content-gap: var(--spacer-s);
 
     @media screen and (min-width: $breakpoint-tablet) {
-      max-width: 25rem;
+      --blog-card-description-margin: var(--spacer-m);
+      --blog-card-content-gap: var(--spacer-m);
+    }
+
+    display: flex;
+    flex-direction: column;
+    color: var(--color-black);
+    gap: var(--blog-card-content-gap);
+    text-decoration: none;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      flex-direction: row;
+    }
+
+    &__image {
+      width: 100%;
+      flex-shrink: 0;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        max-width: 25rem;
+      }
+    }
+
+    &__title {
+      display: block;
+      margin-bottom: var(--spacer-xs);
+    }
+
+    &__description {
+      margin-bottom: var(--blog-card-description-margin);
     }
   }
-
-  &__title {
-    display: block;
-    margin-bottom: var(--spacer-xs);
-  };
-
-  &__description {
-    margin-bottom: var(--blog-card-description-margin);
-  }
-}
 </style>

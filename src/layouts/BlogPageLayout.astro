@@ -1,8 +1,8 @@
 ---
 import * as blog from '@/content/sections/blog.md';
 
-import MainLayout from '@/layouts/MainLayout.astro';
-import DynamicTitle from '@/atoms/DynamicTitle.astro';
+import MainLayout from '@/layouts/MainLayout/MainLayout.astro';
+import DynamicTitle from '@/atoms/DynamicTitle/DynamicTitle.astro';
 import BlogList from '@/blocks/BlogList.astro';
 import InnerPageHeader from '@/components/InnerPageHeader.astro';
 
@@ -12,8 +12,8 @@ const { accentColor } = blog.frontmatter;
 
 const metaData = {
   metaTitle: title,
-  metaDescription: shortDescription
-}
+  metaDescription: shortDescription,
+};
 ---
 
 <MainLayout {metaData}>
@@ -39,91 +39,91 @@ const metaData = {
 </MainLayout>
 
 <style lang="scss">
-@import '../scss/resources/breakpoints';
-@import '../scss/resources/hover';
+  @import '@/scss/resources/breakpoints';
+  @import '@/scss/resources/hover';
 
-.blog-page-layout {
-  $self: &;
+  .blog-page-layout {
+    $self: &;
 
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--color-white);
-  z-index: 999;
-
-  &__body {
+    position: relative;
+    z-index: 999;
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
-    gap: var(--spacer-s);
-    padding-top: var(--spacer-s);
+    background-color: var(--color-white);
 
-    @media screen and (min-width: $breakpoint-mobile) {
-      padding-top: 0;
-      gap: var(--spacer-m);
-    }
-  }
+    &__body {
+      display: flex;
+      flex-direction: column;
+      padding-top: var(--spacer-s);
+      gap: var(--spacer-s);
 
-  &__content {
-    max-width: 640px;
-    margin: 0 auto;
-
-    @media screen and (min-width: $breakpoint-desktop) {
-      margin-top: var(--spacer-m);
-    }
-  }
-
-  &__title {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacer-s);
-    align-items: center;
-    text-align: center;
-  }
-
-  &__progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--spacer-xxs);
-    z-index: 20;
-    scale: 0 1;
-    transform-origin: left;
-    animation: progressBar linear;
-    animation-timeline: scroll();
-  }
-
-  @keyframes progressBar {
-    to {
-      scale: 1 1;
-    }
-  }
-
-  &--blue {
-    #{$self}__link,
-    #{$self}__nav :global(svg) {
-      @include hover {
-        color: var(--color-blue);
+      @media screen and (min-width: $breakpoint-mobile) {
+        padding-top: 0;
+        gap: var(--spacer-m);
       }
     }
 
-    #{$self}__progress-bar {
-      background-color: var(--color-blue)
-    }
-  }
+    &__content {
+      max-width: 640px;
+      margin: 0 auto;
 
-  &--purple {
-    #{$self}__link,
-    #{$self}__nav :global(svg) {
-      @include hover {
-        color: var(--color-purple);
+      @media screen and (min-width: $breakpoint-desktop) {
+        margin-top: var(--spacer-m);
       }
     }
 
-    #{$self}__progress-bar {
-      background-color: var(--color-purple)
+    &__title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacer-s);
+      text-align: center;
+    }
+
+    &__progress-bar {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--spacer-xxs);
+      animation: progress-bar linear;
+      animation-timeline: scroll();
+      scale: 0 1;
+      transform-origin: left;
+    }
+
+    @keyframes progress-bar {
+      to {
+        scale: 1 1;
+      }
+    }
+
+    &--blue {
+      #{$self}__link,
+      #{$self}__nav :global(svg) {
+        @include hover {
+          color: var(--color-blue);
+        }
+      }
+
+      #{$self}__progress-bar {
+        background-color: var(--color-blue);
+      }
+    }
+
+    &--purple {
+      #{$self}__link,
+      #{$self}__nav :global(svg) {
+        @include hover {
+          color: var(--color-purple);
+        }
+      }
+
+      #{$self}__progress-bar {
+        background-color: var(--color-purple);
+      }
     }
   }
-}
 </style>

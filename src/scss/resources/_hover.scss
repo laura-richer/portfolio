@@ -9,19 +9,19 @@
 }
 
 @mixin hover-state($content, $color) {
-  &:after {
+  &::after {
     position: absolute;
     left: 0;
+    overflow: hidden;
     width: 0;
     color: $color;
-    white-space: nowrap;
-    overflow: hidden;
     content: $content;
     transition: width var(--animation-speed) ease-in-out;
+    white-space: nowrap;
   }
 
   @include hover {
-    &:after {
+    &::after {
       width: 100%;
     }
   }

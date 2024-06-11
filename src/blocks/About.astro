@@ -1,4 +1,5 @@
 ---
+import { type LinkStackType, type IconType } from '@/utils/types';
 import * as about from '@/content/sections/about.md';
 import * as contact from '@/content/config/contact.md';
 
@@ -7,34 +8,37 @@ import SectionHeader from '@/components/SectionHeader.astro';
 const { title, stack, accentColor } = about.frontmatter;
 const { email, phone } = contact.frontmatter;
 
+const getFilenameFromPath = (path: string) => /[^/]*$/.exec(path)[0];
+const stackIcons: IconType[] = await Astro.glob('../icons/stack/*.astro');
 
-const getFilenameFromPath = path => /[^/]*$/.exec(path)[0];
-const stackIcons = await Astro.glob('../icons/stack/*.astro');
-
-const projectStackIcons = stack.map(stackItem => {
+const projectStackIcons: LinkStackType[] = stack.map((stackItem: LinkStackType) => {
   return {
     icon: stackIcons.find(
       icon => getFilenameFromPath(icon.file) === `Icon${stackItem.title}.astro`
     ),
     link: stackItem.link,
-    title: stackItem.title
-  }
+    title: stackItem.title,
+  };
 });
 ---
 
 <section id="about" class="about">
   <div class="container animate-section">
-    <SectionHeader
-      title={title}
-      titleColor={accentColor}
-    />
-
+    <SectionHeader title={title} titleColor={accentColor} />
     <div class="about__stack">
-      {projectStackIcons.map((projectStackIcon) =>
-        <a href={projectStackIcon.link} target="_blank" rel="noopener noreferrer" aria-label={projectStackIcon.title} class="about__stack-icon">
-          <projectStackIcon.icon.default />
-        </a>
-      )}
+      {
+        projectStackIcons.map((projectStackIcon: LinkStackType) => (
+          <a
+            href={projectStackIcon.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={projectStackIcon.title}
+            class="about__stack-icon"
+          >
+            <projectStackIcon.icon.default />
+          </a>
+        ))
+      }
     </div>
 
     <div class="about__grid">
@@ -44,10 +48,13 @@ const projectStackIcons = stack.map(stackItem => {
 
       <div class="about__contact">
         <div class="about__contact-item">
-          <a href={`mailto:${email}`} class="about__contact-link about__contact-link--email">{email}</a>
+          <a href={`mailto:${email}`} class="about__contact-link about__contact-link--email"
+            >{email}</a
+          >
         </div>
         <div class="about__contact-item">
-          <a href={`tel:${phone}`} class="about__contact-link about__contact-link--phone">{phone}</a>
+          <a href={`tel:${phone}`} class="about__contact-link about__contact-link--phone">{phone}</a
+          >
         </div>
       </div>
     </div>
@@ -55,91 +62,91 @@ const projectStackIcons = stack.map(stackItem => {
 </section>
 
 <style lang="scss">
-@import '../scss/resources/breakpoints';
-@import '../scss/resources/hover';
+  @import '@/scss/resources/breakpoints';
+  @import '@/scss/resources/hover';
 
-.about {
-  &__grid {
-    display: grid;
-    gap: var(--spacer-l);
-
-    @media screen and (min-width: $breakpoint-tablet) {
-      grid-template-columns: 2fr 1fr;
-      gap: var(--spacer-xl);
-    }
-  }
-
-  &__stack {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacer-s);
-    max-width: 60rem;
-    margin: 0 auto var(--spacer-l);
-
-    &-icon {
-      display: block;
-      height: 3rem;
-      transition: scale var(--animation-speed) ease-in-out;
-
-      :global(svg),
-      :global(img) {
-        width: auto;
-        height: 100%
-      }
-
-      &:hover {
-        scale: 1.1;
-      }
-    }
-  }
-
-  &__contact {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacer-m);
-
-    @media screen and (min-width: $breakpoint-tablet) {
-      gap: var(--spacer-s);
-    }
-
-    @media screen and (min-width: $breakpoint-desktop) {
-      gap: var(--spacer-m);
-    }
-
-    &-link {
-      @include hover-state('', var(--color-purple));
-      position: relative;
-      text-decoration: none;
-      color: currentColor;
-      text-decoration: none;
-      font-weight: var(--font-weight-bold);
-      font-size: 3rem;
-      line-height: 3rem;
+  .about {
+    &__grid {
+      display: grid;
+      gap: var(--spacer-l);
 
       @media screen and (min-width: $breakpoint-tablet) {
-        font-size: 1.8rem;
-        line-height: 2.4rem;
+        gap: var(--spacer-xl);
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+
+    &__stack {
+      display: flex;
+      max-width: 60rem;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacer-l);
+      gap: var(--spacer-s);
+
+      &-icon {
+        display: block;
+        height: 3rem;
+        transition: scale var(--animation-speed) ease-in-out;
+
+        :global(svg),
+        :global(img) {
+          width: auto;
+          height: 100%;
+        }
+
+        &:hover {
+          scale: 1.1;
+        }
+      }
+    }
+
+    &__contact {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacer-m);
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        gap: var(--spacer-s);
       }
 
       @media screen and (min-width: $breakpoint-desktop) {
-        font-size: 2.8rem;
-        line-height: 3.2rem;
+        gap: var(--spacer-m);
       }
 
-      &--email {
-        &:after {
-          content: 'lauraricher@gmail.com';
+      &-link {
+        @include hover-state('', var(--color-purple));
+
+        position: relative;
+        color: currentcolor;
+        font-size: 3rem;
+        font-weight: var(--font-weight-bold);
+        line-height: 3rem;
+        text-decoration: none;
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          font-size: 1.8rem;
+          line-height: 2.4rem;
         }
-      }
 
-      &--phone {
-        &:after {
-          content: '07891384298';
+        @media screen and (min-width: $breakpoint-desktop) {
+          font-size: 2.8rem;
+          line-height: 3.2rem;
+        }
+
+        &--email {
+          &::after {
+            content: 'lauraricher@gmail.com';
+          }
+        }
+
+        &--phone {
+          &::after {
+            content: '07891384298';
+          }
         }
       }
     }
   }
-}
 </style>

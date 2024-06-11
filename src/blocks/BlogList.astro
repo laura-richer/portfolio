@@ -8,47 +8,47 @@ import BlogCard from '@/components/BlogCard.astro';
 const { title = 'Latest blog posts', count, excludeId } = Astro.props;
 const { accentColor } = blog.frontmatter;
 
-const sortedPosts =
-  allBlogPosts.sort((a, b) => {
+const sortedPosts = allBlogPosts
+  .sort((a, b) => {
     return a.frontmatter.id - b.frontmatter.id;
-  }).reverse();
-
-const filteredPosts = sortedPosts.filter((post) => {
-    return post.frontmatter.id !== excludeId;
   })
+  .reverse();
+
+const filteredPosts = sortedPosts.filter(post => {
+  return post.frontmatter.id !== excludeId;
+});
 
 const mappedPosts = filteredPosts.slice(0, count);
 ---
 
 <section id="blog" class="blog-list">
   <div class="container animate-section blog-list__container">
-    <SectionHeader
-      title={title}
-      titleColor={accentColor}
-    />
+    <SectionHeader title={title} titleColor={accentColor} />
 
     <div class="blog-list__grid">
-      {mappedPosts.map((blog) =>
-        <BlogCard
-          title={blog.frontmatter.title}
-          description={blog.frontmatter.description}
-          thumbnail={blog.frontmatter.thumbnail}
-          slug={blog.frontmatter.slug}
-          accentColor={accentColor}
-        />
-      )}
+      {
+        mappedPosts.map(blog => (
+          <BlogCard
+            title={blog.frontmatter.title}
+            description={blog.frontmatter.description}
+            thumbnail={blog.frontmatter.thumbnail}
+            slug={blog.frontmatter.slug}
+            accentColor={accentColor}
+          />
+        ))
+      }
     </div>
   </div>
 </section>
 
 <style lang="scss">
-.blog-list {
-  background-color: var(--color-grey);
+  .blog-list {
+    background-color: var(--color-grey);
 
-  &__grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacer-l);
+    &__grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacer-l);
+    }
   }
-}
 </style>

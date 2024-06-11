@@ -1,11 +1,10 @@
-/* eslint-disable compat/compat */
-const revealElement = targetElement => {
-  const element = targetElement;
-  element.style.opacity = 1;
+const revealElement = (targetElementNode: HTMLElement) => {
+  const element = targetElementNode;
+  element.style.opacity = '1';
   element.style.transform = 'translateY(0)';
 };
 
-export default (targetElement, callback) => {
+export default (targetElement: HTMLElement, callback?: CallableFunction) => {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
