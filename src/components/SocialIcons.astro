@@ -9,28 +9,40 @@ const { github, instagram } = contact.frontmatter;
 
 <nav class="social-icons">
   <span>
-    <a href={github} target="_blank" rel="noopener noreferrer" aria-label="Github" class="social-icons__item">
+    <a
+      href={github}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Github"
+      class="social-icons__item"
+    >
       <IconGithub />
     </a>
   </span>
   <span>
-    <a href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icons__item">
+    <a
+      href={instagram}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      class="social-icons__item"
+    >
       <IconInstagram />
     </a>
   </span>
 </nav>
 
 <style lang="scss">
-.social-icons {
-  display: flex;
-  gap: var(--spacer-xs);
+  .social-icons {
+    display: flex;
+    gap: var(--spacer-xs);
 
-  &__item {
-    color: inherit;
-    display: block;
-    width: 2.5rem;
-    height: 2.5rem;
-    transition: color var(--animation-speed) ease-in-out;
+    &__item {
+      display: block;
+      width: 2.5rem;
+      height: 2.5rem;
+      color: inherit;
+      transition: color var(--animation-speed) ease-in-out;
+    }
   }
-}
 </style>

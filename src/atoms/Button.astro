@@ -7,72 +7,73 @@ const isExternal = link && link.indexOf('http') === 0;
 
 <ButtonElement
   class={`button button--${color} button--${small ? 'small' : ''}`}
-  href={link} target={isExternal ? '_blank' : ''}
-  rel={isExternal ? 'noopener noreferrer' : ''}>
-    {text}
+  href={link}
+  target={isExternal ? '_blank' : ''}
+  rel={isExternal ? 'noopener noreferrer' : ''}
+>
+  {text}
 </ButtonElement>
 
 <style lang="scss" is:global>
-.button {
-  --button-color: var(--color-white);
-  --button-hover-color: var(--color-grey);
-  --button-hover-accent-color: var(--color-black-alpha);
+  .button {
+    --button-color: var(--color-white);
+    --button-hover-color: var(--color-grey);
+    --button-hover-accent-color: var(--color-black-alpha);
 
-  &--purple {
-    --button-color: var(--color-purple);
-    --button-hover-color:var(--color-grey-dark);
-    --button-hover-accent-color: var(--color-grey);
-  }
+    &--purple {
+      --button-color: var(--color-purple);
+      --button-hover-color: var(--color-grey-dark);
+      --button-hover-accent-color: var(--color-grey);
+    }
 
-  &--blue {
-    --button-color: var(--color-blue);
-    --button-hover-color:var(--color-grey-dark);
-    --button-hover-accent-color: var(--color-white);
-  }
+    &--blue {
+      --button-color: var(--color-blue);
+      --button-hover-color: var(--color-grey-dark);
+      --button-hover-accent-color: var(--color-white);
+    }
 
-  position: relative;
-  display: inline-block;
-  width: auto;
-  color: var(--button-color);
-  background-color: transparent;
-  font-size: 1.4rem;
-  font-weight: var(--font-weight-bold);
-  text-decoration: none;
-  text-transform: uppercase;
-  border: 2px solid var(--button-color);
-  padding: var(--spacer-xs) var(--spacer-s);
-  transition: all var(--animation-speed) ease-in-out;
-  cursor: pointer;
-
-  &--small {
-    padding: var(--spacer-xxs) var(--spacer-xs);
-
-  }
-
-  &:after {
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    height: 100%;
-    border: 2px solid transparent;
-    width: 0;
-    content: '';
-    box-sizing: content-box;
+    position: relative;
+    display: inline-block;
+    width: auto;
+    padding: var(--spacer-xs) var(--spacer-s);
+    border: 2px solid var(--button-color);
+    background-color: transparent;
+    color: var(--button-color);
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    text-transform: uppercase;
     transition: all var(--animation-speed) ease-in-out;
-  }
 
-  &:hover,
-  &:focus,
-  &:active {
-    .no-touchevents & {
-      color: var(--button-hover-color);
-      background-color: var(--button-hover-accent-color);
+    &--small {
+      padding: var(--spacer-xxs) var(--spacer-xs);
+    }
 
-      &:after {
-        border-color: var(--button-hover-color);
-        width: 100%;
+    &::after {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 0;
+      height: 100%;
+      box-sizing: content-box;
+      border: 2px solid transparent;
+      content: '';
+      transition: all var(--animation-speed) ease-in-out;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      .no-touchevents & {
+        background-color: var(--button-hover-accent-color);
+        color: var(--button-hover-color);
+
+        &::after {
+          width: 100%;
+          border-color: var(--button-hover-color);
+        }
       }
     }
   }
-}
 </style>

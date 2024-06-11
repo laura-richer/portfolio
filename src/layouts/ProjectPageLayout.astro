@@ -1,7 +1,7 @@
 ---
+import { type IconType } from '@/utils/types';
 import * as projects from '@/content/sections/projects.md';
-
-import MainLayout from '@/layouts/MainLayout.astro';
+import MainLayout from '@/layouts/MainLayout/MainLayout.astro';
 import IconChevronLeft from '@/icons/IconChevronLeft.astro';
 import IconChevronRight from '@/icons/IconChevronRight.astro';
 import IconGithub from '@/icons/IconGithub.astro';
@@ -15,15 +15,13 @@ const { accentColor } = projects.frontmatter;
 
 const metaData = {
   metaTitle: title,
-  metaDescription: shortDescription
-}
+  metaDescription: shortDescription,
+};
 
-const getFilenameFromPath = path => /[^/]*$/.exec(path)[0];
-const stackIcons = await Astro.glob('../icons/stack/*.astro');
-const projectStackIcons = stack.map(stackItem => {
-  return stackIcons.find(
-    icon => getFilenameFromPath(icon.file) === `Icon${stackItem}.astro`
-  );
+const getFilenameFromPath = (path: string) => /[^/]*$/.exec(path)[0];
+const stackIcons: IconType[] = await Astro.glob('../icons/stack/*.astro');
+const projectStackIcons: IconType[] = stack.map((stackItem: string) => {
+  return stackIcons.find(icon => getFilenameFromPath(icon.file) === `Icon${stackItem}.astro`);
 });
 
 const PrevNavItem = prevSlug ? 'a' : 'span';
@@ -42,7 +40,6 @@ const NextNavItem = nextSlug ? 'a' : 'span';
         <IconChevronLeft />
       </PrevNavItem>
 
-
       <NextNavItem
         href={nextSlug && `/project/${nextSlug}`}
         class={`project-page-layout__nav-item ${!nextSlug && 'project-page-layout__nav-item--disabled'}`}
@@ -57,11 +54,13 @@ const NextNavItem = nextSlug ? 'a' : 'span';
       </div>
 
       <div class="project-page-layout__stack">
-        {projectStackIcons.map((projectStackIcon) =>
-          <span class="project-page-layout__stack-icon">
-            <projectStackIcon.default />
-          </span>
-        )}
+        {
+          projectStackIcons.map((projectStackIcon: IconType) => (
+            <span class="project-page-layout__stack-icon">
+              <projectStackIcon.default />
+            </span>
+          ))
+        }
       </div>
 
       <section class="project-page-layout__content-wrapper">
@@ -71,17 +70,35 @@ const NextNavItem = nextSlug ? 'a' : 'span';
           </article>
 
           <div class="project-page-layout__link-list">
-            {website &&
-              <a class="project-page-layout__link" href={website} target="_blank" rel="noopener noreferrer">
-                <span class="project-page-layout__link-icon"><IconWeb/></span>
-                <span>{website}</span>
-              </a>
+            {
+              website && (
+                <a
+                  class="project-page-layout__link"
+                  href={website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="project-page-layout__link-icon">
+                    <IconWeb />
+                  </span>
+                  <span>{website}</span>
+                </a>
+              )
             }
-            {github &&
-              <a class="project-page-layout__link" href={github} target="_blank" rel="noopener noreferrer">
-                <span class="project-page-layout__link-icon"><IconGithub/></span>
-                <span>{github}</span>
-              </a>
+            {
+              github && (
+                <a
+                  class="project-page-layout__link"
+                  href={github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="project-page-layout__link-icon">
+                    <IconGithub />
+                  </span>
+                  <span>{github}</span>
+                </a>
+              )
             }
           </div>
         </div>
@@ -93,134 +110,133 @@ const NextNavItem = nextSlug ? 'a' : 'span';
 </MainLayout>
 
 <style lang="scss">
-@import '../scss/resources/breakpoints';
-@import '../scss/resources/hover';
+  @import '@/scss/resources/breakpoints';
+  @import '@/scss/resources/hover';
 
-.project-page-layout {
-  $self: &;
+  .project-page-layout {
+    $self: &;
 
-  --project-page-padding: var(--spacer-s);
+    --project-page-padding: var(--spacer-s);
 
-  @media screen and (min-width: $breakpoint-mobile) {
-    --project-page-padding: var(--spacer-m);
-  }
+    @media screen and (min-width: $breakpoint-mobile) {
+      --project-page-padding: var(--spacer-m);
+    }
 
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--color-white);
-  z-index: 999;
+    position: relative;
+    z-index: 999;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: var(--color-white);
 
-  &__nav {
-    display: none;
+    &__nav {
+      display: none;
 
-    @media screen and (min-width: $breakpoint-desktop) {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
+      @media screen and (min-width: $breakpoint-desktop) {
+        position: fixed;
+        top: 50%;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: var(--project-page-padding);
+        transform: translateY(-50%);
+
+        :global(svg) {
+          width: 2rem;
+          height: 2rem;
+          cursor: pointer;
+        }
+
+        &-item {
+          &--disabled {
+            opacity: 0;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+
+    &__body {
       display: flex;
-      justify-content: space-between;
-      width: 100%;
+      flex-direction: column;
       padding: var(--project-page-padding);
+      gap: var(--spacer-s);
+
+      @media screen and (min-width: $breakpoint-mobile) {
+        padding-top: 0;
+        gap: var(--spacer-m);
+      }
+    }
+
+    &__title {
+      display: block;
+      text-align: center;
+    }
+
+    &__stack {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacer-s);
+
+      &-icon {
+        display: block;
+        height: 4rem;
+
+        :global(svg),
+        :global(img) {
+          width: auto;
+          height: 100%;
+        }
+      }
+    }
+
+    &__content-wrapper {
+      display: grid;
+      gap: var(--spacer-m);
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        gap: var(--spacer-m);
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacer-s);
+    }
+
+    &__link-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacer-xs);
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      color: currentcolor;
+      gap: var(--spacer-xs);
+      transition: color var(--animation-speed) ease-in-out;
 
       :global(svg) {
-        width: 2rem;
-        height: 2rem;
-        cursor: pointer;
+        width: auto;
+        height: 100%;
       }
 
-      &-item {
-        &--disabled {
-          pointer-events: none;
-          opacity: 0;
+      &-icon {
+        height: 2rem;
+      }
+    }
+
+    &--purple {
+      #{$self}__link,
+      #{$self}__nav :global(svg) {
+        @include hover {
+          color: var(--color-purple);
         }
       }
     }
   }
-
-  &__body {
-    display: flex;
-    flex-direction: column;
-    padding: var(--project-page-padding);
-    gap: var(--spacer-s);
-
-    @media screen and (min-width: $breakpoint-mobile) {
-      padding-top: 0;
-      gap: var(--spacer-m);
-    }
-  }
-
-  &__title {
-    display: block;
-    text-align: center;
-  }
-
-  &__stack {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacer-s);
-
-    &-icon {
-      display: block;
-      height: 4rem;
-
-      :global(svg),
-      :global(img) {
-        width: auto;
-        height: 100%
-      }
-    }
-  }
-
-  &__content-wrapper {
-    display: grid;
-    gap: var(--spacer-m);
-
-    @media screen and (min-width: $breakpoint-tablet) {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacer-m);
-    }
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacer-s);
-  }
-
-  &__link-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacer-xs);
-  }
-
-  &__link {
-    display: flex;
-    align-items: center;
-
-    color: currentColor;
-    gap: var(--spacer-xs);
-    transition: color var(--animation-speed) ease-in-out;
-
-    :global(svg) {
-      height: 100%;
-      width: auto;
-    }
-
-    &-icon {
-      height: 2rem;
-    }
-  }
-
-  &--purple {
-    #{$self}__link,
-    #{$self}__nav :global(svg) {
-      @include hover {
-        color: var(--color-purple);
-      }
-    }
-  }
-}
 </style>

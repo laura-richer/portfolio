@@ -1,13 +1,14 @@
-@import './_root.scss';
+/* stylelint-disable scss/load-no-partial-leading-underscore */
+@import './_root';
 
-@import './resources/breakpoints.scss';
-@import './resources/container.scss';
-@import './resources/fonts.scss';
-@import './resources/hover.scss';
+@import './resources/breakpoints';
+@import './resources/container';
+@import './resources/fonts';
+@import './resources/hover';
 
-@import './_base.scss';
-@import './_typography.scss';
-@import './animate-section.scss';
-@import './container.scss';
-@import './markdown.scss';
+@import './_base';
+@import './_typography';
+@import './animate-section';
+@import './container';
+@import './markdown';
 

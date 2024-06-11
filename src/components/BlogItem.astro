@@ -1,10 +1,10 @@
 ---
-const { title, slug, thumbnail, description } = Astro.props;
+const { title, thumbnail, description } = Astro.props;
 ---
 
 <div class="blog-item">
   <figure class="blog-item__image">
-    <img src={ thumbnail } alt={ title } />
+    <img src={thumbnail} alt={title} />
   </figure>
   <div class="blog-item__content">
     <span class="h3 blog-item__title">{title}</span>
@@ -14,34 +14,34 @@ const { title, slug, thumbnail, description } = Astro.props;
 </div>
 
 <style lang="scss">
-@import '../scss/resources/hover';
+  @import '@/scss/resources/hover';
 
-.blog-item {
-  display: flex;
-  gap: var(--spacer-s);
-
-  &__image {
-    max-width: 15rem;
-  }
-
-  &__content {
+  .blog-item {
     display: flex;
-    flex-direction: column;
     gap: var(--spacer-s);
-  }
 
-  &__title {
-    display: block;
-    font-weight: 200;
-  }
+    &__image {
+      max-width: 15rem;
+    }
 
-  &__cta {
-    transition: color var(--animation-speed) ease-in-out;
-    cursor: pointer;
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacer-s);
+    }
 
-    @include hover {
-      color: var(--color-blue);
+    &__title {
+      display: block;
+      font-weight: 200;
+    }
+
+    &__cta {
+      cursor: pointer;
+      transition: color var(--animation-speed) ease-in-out;
+
+      @include hover {
+        color: var(--color-blue);
+      }
     }
   }
-}
 </style>

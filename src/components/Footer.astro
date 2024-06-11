@@ -11,24 +11,24 @@ import SocialIcons from '@/components/SocialIcons.astro';
 </footer>
 
 <style lang="scss">
-.footer {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  .footer {
+    background-color: var(--color-black);
+    color: var(--color-white);
 
-  &__container {
-    display: flex;
-    justify-content: center;
-    padding-top: var(--spacer-s);
-    padding-bottom: var(--spacer-s);
-  }
+    &__container {
+      display: flex;
+      justify-content: center;
+      padding-top: var(--spacer-s);
+      padding-bottom: var(--spacer-s);
+    }
 
-  :global(.social-icons) {
-    gap: var(--spacer-s);
-  }
+    :global(.social-icons) {
+      gap: var(--spacer-s);
+    }
 
-  :global(.social-icons__item:hover),
-  :global(.social-icons__item:focus) {
-    color: var(--color-purple);
+    :global(.social-icons__item:hover),
+    :global(.social-icons__item:focus) {
+      color: var(--color-purple);
+    }
   }
-}
 </style>

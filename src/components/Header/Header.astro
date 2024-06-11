@@ -1,0 +1,270 @@
+---
+import * as contact from '@/content/config/contact.md';
+
+import IconBurger from '@/icons/IconBurger.astro';
+import IconClose from '@/icons/IconClose.astro';
+import SocialIcons from '@/components/SocialIcons.astro';
+
+const { email, phone } = contact.frontmatter;
+
+const menuItems = [
+  {
+    name: 'Home',
+    slug: '#',
+    classSuffix: 'home',
+  },
+  {
+    name: 'Projects',
+    slug: '#projects',
+    classSuffix: 'projects',
+  },
+  {
+    name: 'Blog',
+    slug: '#blog',
+    classSuffix: 'blog',
+  },
+  {
+    name: 'About',
+    slug: '#about',
+    classSuffix: 'about',
+  },
+];
+
+const contactMenuItems = [
+  {
+    name: email,
+    slug: `mailto:${email}`,
+    classSuffix: 'email',
+  },
+  {
+    name: phone,
+    slug: `tel:${phone}`,
+    classSuffix: 'phone',
+  },
+];
+---
+
+<header class="header">
+  <div class="header__container">
+    <a href="#" class="header__title">Laura Richer</a>
+    <button class="header__menu-icon header__menu-icon--open-btn" aria-label="Open menu">
+      <IconBurger />
+    </button>
+  </div>
+
+  <div class="header__menu">
+    <button
+      class="header__menu-icon header__menu-icon--close-btn header__menu-tab-item"
+      role="button"
+      aria-label="Close menu"
+    >
+      <IconClose />
+    </button>
+
+    <nav class="header__menu-items">
+      {
+        menuItems.map(menuItem => (
+          <div class="header__menu-item">
+            <a
+              href={menuItem.slug}
+              class={`header__menu-link header__menu-link--${menuItem.classSuffix} header__menu-tab-item`}
+            >
+              {menuItem.name}
+            </a>
+          </div>
+        ))
+      }
+
+      <span class="header__menu-item header__menu-social-links"><SocialIcons /></span>
+
+      {
+        contactMenuItems.map(contactMenuItem => (
+          <div class="header__menu-item">
+            <a
+              href={contactMenuItem.slug}
+              class={`header__menu-link header__menu-link--small header__menu-link--${contactMenuItem.classSuffix} header__menu-tab-item`}
+            >
+              {contactMenuItem.name}
+            </a>
+          </div>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script src="./header.ts"></script>
+
+<style lang="scss">
+  @import '@/scss/resources/breakpoints';
+  @import '@/scss/resources/hover';
+
+  .header {
+    $self: &;
+    --header-padding: var(--spacer-s);
+
+    @media screen and (min-width: $breakpoint-mobile) {
+      --header-padding: var(--spacer-s) calc(var(--spacer-s) * 2);
+    }
+
+    &__container {
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--header-padding);
+      background-color: var(--color-black-alpha);
+      color: var(--color-white);
+    }
+
+    &__title {
+      position: relative;
+      color: var(--color-white);
+      font-family: var(--font-family-logo);
+      font-size: 2.8rem;
+      line-height: 3.8rem;
+      text-decoration: none;
+
+      @include hover-state('Laura Richer', var(--color-purple));
+    }
+
+    &__menu-icon {
+      all: unset;
+      display: block;
+      width: 3rem;
+      height: 3rem;
+      cursor: pointer;
+      transition: color var(--animation-speed) ease-in-out;
+
+      &--open-btn {
+        @include hover {
+          color: var(--color-purple);
+        }
+      }
+
+      &--close-btn {
+        margin-left: auto;
+
+        @include hover {
+          color: var(--color-grey-dark);
+        }
+      }
+    }
+
+    &__menu {
+      position: fixed;
+      z-index: 999;
+      width: 100vw;
+      height: 100vh;
+      padding: var(--header-padding);
+      background-color: var(--color-purple);
+      color: var(--color-white);
+      transform: translateX(100%);
+      transition: transform var(--animation-speed) ease-in-out;
+
+      &--active {
+        transform: translateX(0);
+      }
+
+      &-items {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--spacer-s);
+      }
+
+      &-item {
+        opacity: 0;
+
+        #{$self}__menu--active & {
+          @for $i from 1 through 7 {
+            &:nth-child(#{$i}n) {
+              opacity: 1;
+              transition: opacity 0.5s ease-in #{$i * 0.1}s;
+            }
+          }
+        }
+
+        :global(.social-icons__item:hover),
+        :global(.social-icons__item:focus) {
+          color: var(--color-grey-dark);
+        }
+      }
+
+      &-link {
+        @include hover-state('', var(--color-grey-dark));
+
+        position: relative;
+        align-self: flex-start;
+        color: var(--color-white);
+        font-size: 4rem;
+        font-weight: var(--font-weight-bold);
+        line-height: 4.8rem;
+        text-decoration: none;
+
+        @media screen and (min-width: $breakpoint-mobile) {
+          font-size: 6rem;
+          line-height: 7.2rem;
+        }
+
+        &--small {
+          font-size: 2.4rem;
+          font-weight: var(--font-weight-medium);
+          line-height: 2.8rem;
+        }
+
+        &--home {
+          &::after {
+            content: 'Home';
+          }
+        }
+
+        &--about {
+          &::after {
+            content: 'About';
+          }
+        }
+
+        &--projects {
+          &::after {
+            content: 'Projects';
+          }
+        }
+
+        &--playground {
+          &::after {
+            content: 'Playground';
+          }
+        }
+
+        &--blog {
+          &::after {
+            content: 'Blog';
+          }
+        }
+
+        &--contact {
+          &::after {
+            content: 'Contact';
+          }
+        }
+
+        &--email {
+          &::after {
+            content: 'lauraricher@gmail.com';
+          }
+        }
+
+        &--phone {
+          &::after {
+            content: '07891384298';
+          }
+        }
+      }
+    }
+  }
+</style>

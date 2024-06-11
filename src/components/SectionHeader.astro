@@ -5,33 +5,33 @@ const { title, titleColor } = Astro.props;
 ---
 
 <div class="section-header">
-  <Title title={title} color={titleColor}>
+  <Title title={title} color={titleColor} />
 </div>
 
 <style lang="scss">
-.section-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: var(--spacer-l);
-  gap: var(--spacer-s);
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacer-l);
+    gap: var(--spacer-s);
+    text-align: center;
 
-  &__title {
-    color: var(--color-black);
+    &__title {
+      color: var(--color-black);
 
-    &--purple {
-      color: var(--color-purple);
+      &--purple {
+        color: var(--color-purple);
+      }
+
+      &--blue {
+        color: var(--color-blue);
+      }
     }
 
-    &--blue {
-      color: var(--color-blue);
+    &__copy {
+      max-width: var(--container-compact-max-width);
+      margin: 0 auto;
     }
   }
-
-  &__copy {
-    max-width: var(--container-compact-max-width);
-    margin: 0 auto;
-  }
-}
 </style>
