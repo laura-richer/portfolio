@@ -1,8 +1,10 @@
 import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
+// https://astro.build/config
 export default defineConfig({
-  integrations: [mdx()],
+  integrations: [sitemap()],
+  site: 'https://www.lauraricher.co.uk',
   compressHTML: true,
   markdown: {
     shikiConfig: {
