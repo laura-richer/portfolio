@@ -1,5 +1,5 @@
 ---
-id: 2
+id: 3
 layout: ../../layouts/BlogPageLayout.astro
 title: 'Elevating My Frontend Development Workflow: Essential VS Code Extensions'
 shortTitle: 'Essential VS Code Extensions'

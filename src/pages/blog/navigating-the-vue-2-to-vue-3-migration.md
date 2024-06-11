@@ -1,5 +1,5 @@
 ---
-id: 1
+id: 2
 layout: ../../layouts/BlogPageLayout.astro
 title: 'Navigating the Vue 2 to Vue 3 Migration'
 slug: 'navigating-the-vue-2-to-vue-3-migration'

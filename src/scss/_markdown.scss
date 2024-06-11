@@ -11,4 +11,9 @@
   h4 {
     margin-bottom: var(--spacer-xs);
   }
+
+  code {
+    color: var(--color-white);
+    background-color: var(--color-grey-dark);
+  }
 }
